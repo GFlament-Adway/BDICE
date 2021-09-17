@@ -1,0 +1,10 @@
+{
+"Coal" : 1.088,
+"Crude oil" : 1.07,
+"Oil products" : 1.07,
+"Natural gas" : 1.04,
+"Nuclear" : 1,
+"Hydro" : 0.85,
+"Wind, solar, etc.": 0.15,
+"Biofuels and waste": 1.15
+}
