@@ -8,19 +8,20 @@ from statsmodels.tsa.api import VAR
 import statsmodels.stats.api as sms
 from statsmodels.compat import lzip
 from utils.utils import get_tfp, get_data, get_exergy_iea, compute_tfp_level, get_energy_iea, get_exergy, \
-    get_exergy_coefs, gen_exergy, diff
+    get_exergy_coefs, gen_exergy, diff, countries_energy, tfp
 from scenario import scenario
 import json
 import scipy
 from statsmodels.tsa.stattools import adfuller
+import pandas as pd
+import scipy.stats as stats
 
 
 def var(data):
     return ([100 * (data[t] - data[t - 1]) / data[t - 1] for t in range(1, len(data))])
 
 
-
-if __name__ == "__main__":
+def first_result():
     to_plot = True
 
     horizon = 100
@@ -28,7 +29,7 @@ if __name__ == "__main__":
 
     with open("data/scenario.json", "w") as json_file:
         json.dump(data_scenario, json_file)
-    
+
     Exergy_US = get_exergy_iea()
     c_e = Exergy_US[0]
     Exergy_US = [e / c_e for e in Exergy_US]
@@ -73,7 +74,7 @@ if __name__ == "__main__":
     plt.plot(diff(tfp_level)[:-1], label="Observed total factor productivity")
     plt.legend()
     plt.draw()
-    
+
     tfp_pred = [diff(tfp_level)[-n_obs+1]]
     diff_exergy = diff(exergy_level[-n_obs-1:])
     print(len(diff_exergy))
@@ -87,7 +88,7 @@ if __name__ == "__main__":
     plt.plot(diff(tfp_level)[-n_obs-1:], label="truc")
     plt.legend()
     plt.show()
-    
+
     # Source : https://fred.stlouisfed.org/series/RTFPNAUSA632NRUG
     # Source : https://www.frbsf.org/economic-research/publications/working-papers/2012/19/
 
@@ -111,7 +112,7 @@ if __name__ == "__main__":
     plt.figure()
     plt.plot(reg.resid)
     plt.draw()
-    
+
     """
     energy_us = get_energy_iea()
     scenario_paris = scenario.gen_scenario(100, scenari="Paris")
@@ -128,13 +129,15 @@ if __name__ == "__main__":
     resid_var = np.var(reg.resid)
     for i in range(nb_scenarios):
         for t in range(horizon):
-            tfp_pred_paris[i] += [tfp_pred_paris[i][-1] + res.coefs_exog[0][0] + res.coefs[0][0][0]*(tfp_pred_paris[i][-1] - tfp_pred_paris[i][-2]) +res.coefs[0][0][1]*exergy_scenario_paris[t] + np.random.normal(0, resid_var)]
-            tfp_pred_bau[i] += [tfp_pred_bau[i][-1] + res.coefs_exog[0][0] + res.coefs[0][0][0] * (
-                        tfp_pred_bau[i][-1] - tfp_pred_bau[i][-2]) + res.coefs[0][0][1] * exergy_scenario_bau[
+            tfp_pred_paris[i] += [tfp_pred_paris[i][-1] + res.coefs_exog[0][0] + res.coefs[0][0][0] * (
+                    tfp_pred_paris[i][-1] - tfp_pred_paris[i][-2]) + res.coefs[0][0][1] * exergy_scenario_paris[
                                       t] + np.random.normal(0, resid_var)]
+            tfp_pred_bau[i] += [tfp_pred_bau[i][-1] + res.coefs_exog[0][0] + res.coefs[0][0][0] * (
+                    tfp_pred_bau[i][-1] - tfp_pred_bau[i][-2]) + res.coefs[0][0][1] * exergy_scenario_bau[
+                                    t] + np.random.normal(0, resid_var)]
             tfp_pred_peak[i] += [tfp_pred_peak[i][-1] + res.coefs_exog[0][0] + res.coefs[0][0][0] * (
                     tfp_pred_peak[i][-1] - tfp_pred_peak[i][-2]) + res.coefs[0][0][1] * exergy_scenario_peak[
-                                    t] + np.random.normal(0, resid_var)]
+                                     t] + np.random.normal(0, resid_var)]
     with open("data/tfp_nordhaus.csv", "r") as csv_file:
         raw_tfp_values = csv.reader(csv_file, delimiter=";")
         tfp_nordhaus = []
@@ -149,25 +152,70 @@ if __name__ == "__main__":
     tfp_pred_bau = np.array(tfp_pred_bau).T
     tfp_pred_peak = np.array(tfp_pred_peak).T
 
-    alpha=0.01
+    alpha = 0.01
     plt.figure()
-    plt.plot([np.sort([tfp for tfp in tfp_pred_bau[t]])[int(nb_scenarios/2)] for t in range(horizon)], color="blue")
-    plt.plot([np.sort([tfp for tfp in tfp_pred_bau[t]])[int(nb_scenarios*alpha)] for t in range(horizon)], color="blue", label="Buisiness as usual scenario")
-    plt.plot([np.sort([tfp for tfp in tfp_pred_bau[t]])[int(nb_scenarios * (1-alpha))] for t in range(horizon)],
+    plt.plot([np.sort([tfp for tfp in tfp_pred_bau[t]])[int(nb_scenarios / 2)] for t in range(horizon)], color="blue")
+    plt.plot([np.sort([tfp for tfp in tfp_pred_bau[t]])[int(nb_scenarios * alpha)] for t in range(horizon)],
+             color="blue", label="Buisiness as usual scenario")
+    plt.plot([np.sort([tfp for tfp in tfp_pred_bau[t]])[int(nb_scenarios * (1 - alpha))] for t in range(horizon)],
              color="blue")
 
-
-    plt.plot([np.sort([tfp for tfp in tfp_pred_paris[t]])[int(nb_scenarios/2)] for t in range(horizon)], color="red")
-    plt.plot([np.sort([tfp for tfp in tfp_pred_paris[t]])[int(nb_scenarios*alpha)] for t in range(horizon)], color="red", label="Under Paris agreement scenario")
-    plt.plot([np.sort([tfp for tfp in tfp_pred_paris[t]])[int(nb_scenarios * (1-alpha))] for t in range(horizon)],
+    plt.plot([np.sort([tfp for tfp in tfp_pred_paris[t]])[int(nb_scenarios / 2)] for t in range(horizon)], color="red")
+    plt.plot([np.sort([tfp for tfp in tfp_pred_paris[t]])[int(nb_scenarios * alpha)] for t in range(horizon)],
+             color="red", label="Under Paris agreement scenario")
+    plt.plot([np.sort([tfp for tfp in tfp_pred_paris[t]])[int(nb_scenarios * (1 - alpha))] for t in range(horizon)],
              color="red")
 
-    plt.scatter([k*5 for k in range(len(tfp_nordhaus))], tfp_nordhaus, color="blue", label="Nordhaus assumptions")
-    plt.scatter([k*5 for k in range(len(raw_tfp_acpr))], raw_tfp_acpr, color="red", label="ACPR assumptions")
+    plt.scatter([k * 5 for k in range(len(tfp_nordhaus))], tfp_nordhaus, color="blue", label="Nordhaus assumptions")
+    plt.scatter([k * 5 for k in range(len(raw_tfp_acpr))], raw_tfp_acpr, color="red", label="ACPR assumptions")
     plt.legend()
 
     with open("tfp_pred_paris.csv", "w") as csv_file:
         writer = csv.writer(csv_file, delimiter=";")
-        writer.writerow([str(round(np.sort([tfp for tfp in tfp_pred_paris[t]])[int(nb_scenarios/2)],3)).replace(".", ",") for t in range(0, horizon, 5)])
+        writer.writerow(
+            [str(round(np.sort([tfp for tfp in tfp_pred_paris[t]])[int(nb_scenarios / 2)], 3)).replace(".", ",") for t
+             in range(0, horizon, 5)])
 
+    plt.show()
+
+
+if __name__ == "__main__":
+    countries = ["United States", "France", "Belgium", "Spain", "Germany", "Japan", "United Kingdom", "Chile", "Poland", "Korea", "Mexico", "Greece", "Finland", "Italy", "Australia", "Austria"]
+    starting_year = 1971
+    end_year = 2020
+    all_tfp = np.array([tfp("data/iea/tfp_countries.csv", country=country)[country] for country in countries])
+    diff_all_tfp = np.array([np.abs(var(tfp("data/iea/tfp_countries.csv", country=country)[country])) for country in countries]).flatten()
+
+    x_axis = np.linspace(0.0001, np.max(diff_all_tfp), 1000)
+    ecdf_tfp = [len([i for i in diff_all_tfp if i > x])/len(diff_all_tfp) for x in x_axis]
+    fig = plt.figure()
+    ax = fig.add_subplot(2, 1, 1)
+    plt.plot(x_axis, ecdf_tfp)
+    ax.set_xscale("log")
+    plt.show()
+    print(np.array(all_tfp).shape)
+    mean_tfp = [np.mean([all_tfp[t][k] for t in range(len(all_tfp))]) for k in range(len(all_tfp[0]))]
+    mean_exergy = []
+    for country in countries:
+
+        data = countries_energy(country=country, starting_year=starting_year, end_year=end_year)
+        exergy_level = [
+            data["country"][country][starting_year + year]["exergy"]
+            for year in range(end_year - starting_year)]
+        tfp_level = tfp("data/iea/tfp_countries.csv", country=country)[country]
+        mean_exergy += [exergy_level]
+    mean_exergy = [np.mean([mean_exergy[k][t] for k in range(len(mean_exergy))]) for t in range(len(mean_exergy[0]))]
+    mean_exergy = [mean_exergy[t]/mean_exergy[0] for t in range(len(mean_exergy))]
+    df = pd.DataFrame(
+        np.array([diff(mean_tfp)[starting_year - 1971:(-1 + end_year - 2020)], diff(mean_exergy)[1:]]).T,
+        columns=["TFP", "exergy"])
+    model = VAR(df)
+    reg = model.fit(1)
+    print(reg.summary())
+    import matplotlib.pyplot as plt
+
+    plt.figure()
+    plt.plot([k + 1 for k in range(len(df["TFP"]))], df["exergy"], label="exergy")
+    plt.plot(df["TFP"], label="TFP")
+    plt.legend()
     plt.show()
