@@ -2,6 +2,26 @@ import csv
 import numpy as np
 import json
 
+
+def med_regression(x,y, n_deciles=3, alpha=0.5):
+    """
+
+    :param x:
+    :param y:
+    :return:
+    """
+
+    x = list(x)
+    y=list(y)
+
+    x_sorted =[np.sort(x)[int(k*len(x)/n_deciles) : int((k+1)*len(x)/n_deciles)] for k in range(n_deciles)]
+    y_sorted = [[y[x.index(x_value)] for x_value in x_sorted[k]] for k in range(n_deciles)]
+
+    med_x = [np.sort(x)[int(len(x)*0.5)] for x in x_sorted]
+    med_y = [np.sort(y)[int(len(y)*alpha)] for y in y_sorted]
+
+    return((med_y[-1] - med_y[0])/(med_x[-1] - med_x[0]), (np.sum([med_y[k] for k in range(n_deciles)]) - np.sum([med_x[k] for k in range(n_deciles)]) ) / n_deciles)
+
 def get_countries(path="data/iea/tfp_countries.csv"):
     countries = []
     with open(path, 'r') as csv_file:
@@ -10,6 +30,7 @@ def get_countries(path="data/iea/tfp_countries.csv"):
             if i == 0:
                 countries = row
     return countries
+
 def countries_energy(exergy_coefs_path = "data/iea/exergy_coefs.json", energy_path="data/iea/IEA_all_countries/countries_energy_balance.csv", country="Belgium", starting_year = 1971, end_year = 2020):
     years = [starting_year + k for k in range(end_year - starting_year)]
     exergy_coef = get_exergy_coefs(exergy_coefs_path)
@@ -95,7 +116,8 @@ def compute_tfp_level(variations):
     real_tfp = [1]
     for k in range(1, len(variations)):
         real_tfp += [real_tfp[k - 1] * (1 + variations[k] / 100)]
-    return real_tfp
+    log_tfp = [np.log(tfp) for tfp in real_tfp]
+    return log_tfp
 
 
 def get_data(path="data/energy.csv"):
@@ -161,7 +183,8 @@ def get_tfp(path="../data/tfp_data"):
     return [float(value.replace("\n", "").replace(",", ".").replace('"', '')) for value in data]
 
 
+
+
 if __name__ == "__main__":
-    country = "United States"
-    tfp("../data/iea/tfp_countries.csv", country)
+    med_regression([1,2,3,4,5], [2,3,4,4,5])
     

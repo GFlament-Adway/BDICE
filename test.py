@@ -32,14 +32,14 @@ def first_result():
 
     Exergy_US = get_exergy_iea()
     c_e = Exergy_US[0]
-    Exergy_US = [e / c_e for e in Exergy_US]
-    Exergy_US = var(Exergy_US)
-    # Exergy_US = var(Exergy_US)
-    tfp = get_tfp("data/tfp")[2:]
+    Exergy_US = [[1, np.log(e/c_e)] for e in Exergy_US]
+    #Exergy_US = var(Exergy_US)
+    tfp = get_tfp("data/tfp")[:-1]
 
     tfp_level = compute_tfp_level(tfp)
-    tfp_level = [t * 1.782614 for t in tfp_level]  # 1.782614 correspond à la valeur de référence de la TFP
-    exergy_level = compute_tfp_level(Exergy_US)
+    tfp_level = [t for t in tfp_level]  # 1.782614 correspond à la valeur de référence de la TFP
+    exergy_level = Exergy_US
+    print(len(tfp_level), len(exergy_level))
 
     import pandas as pd
 
@@ -48,26 +48,36 @@ def first_result():
 
     print("tfp", adfuller(tfp_level))
     print("diff tfp", adfuller(diff(tfp)))
-    print('Exergy', adfuller(exergy_level))
-    print("diff Exergy", adfuller(Exergy_US))
     print(adfuller(reg.resid))
-
     n_obs = 0
 
-    df = pd.DataFrame(np.array([diff(tfp_level)[:-1], diff(exergy_level)[1:]]).T, columns=["TFP", "exergy"])
+    df = pd.DataFrame(np.array([diff(tfp_level), diff(np.array(exergy_level).T[1])]).T, columns=["TFP", "exergy"])
     model = VAR(df)
 
     res = model.fit(1)
     y = diff(tfp_level)[:-1]
     var_y = np.sum([(y[t] - np.mean(y)) ** 2 for t in range(len(y))])
-    print(res.resid["TFP"].values ** 2)
-    print(res.resid["TFP"].values ** 2)
     # PIB_US = var(PIB_US)
     print(res.summary())
     print("R2 :", 1 - np.sum(res.resid["TFP"].values ** 2) / np.sum(var_y))
     print(sm.stats.acorr_ljungbox(res.resid["TFP"], lags=[1, 2, 3, 4, 5, 10], return_df=True))
     print(sm.stats.stattools.jarque_bera(res.resid["TFP"]))
+    print(adfuller(res.resid["TFP"]))
+    plt.figure()
+    plt.plot([k for k in range(len(tfp_level[2:]))], res.fittedvalues["TFP"], label="fitted")
+    plt.plot(diff(tfp_level[1:]), label="observed")
+    plt.xticks([k for k in range(0, len(res.fittedvalues["TFP"]), 5)], [1948 +k for k in range(0, len(res.fittedvalues["TFP"]), 5)])
+    plt.legend()
+    plt.ylabel("log variation of TFP")
+    plt.show()
 
+    plt.figure()
+    plt.plot([k for k in range(len(tfp_level[2:]))], res.resid["TFP"], label="residuals")
+    plt.xticks([k for k in range(0, len(res.fittedvalues["TFP"]), 5)],
+               [1948 + k for k in range(0, len(res.fittedvalues["TFP"]), 5)])
+    plt.legend()
+    plt.ylabel("residuals")
+    plt.show()
     """
     plt.figure()
     plt.plot(res.fittedvalues["TFP"], label="Predicted total factor productivity")
@@ -178,16 +188,17 @@ def first_result():
 
     plt.show()
 
-
-if __name__ == "__main__":
-    countries = ["United States", "France", "Belgium", "Spain", "Germany", "Japan", "United Kingdom", "Chile", "Poland", "Korea", "Mexico", "Greece", "Finland", "Italy", "Australia", "Austria"]
+def result_country():
+    countries = ["United States", "France", "Belgium", "Spain", "Germany", "Japan", "United Kingdom", "Chile", "Poland",
+                 "Korea", "Mexico", "Greece", "Finland", "Italy", "Australia", "Austria"]
     starting_year = 1971
     end_year = 2020
     all_tfp = np.array([tfp("data/iea/tfp_countries.csv", country=country)[country] for country in countries])
-    diff_all_tfp = np.array([np.abs(var(tfp("data/iea/tfp_countries.csv", country=country)[country])) for country in countries]).flatten()
+    diff_all_tfp = np.array(
+        [np.abs(var(tfp("data/iea/tfp_countries.csv", country=country)[country])) for country in countries]).flatten()
 
     x_axis = np.linspace(0.0001, np.max(diff_all_tfp), 1000)
-    ecdf_tfp = [len([i for i in diff_all_tfp if i > x])/len(diff_all_tfp) for x in x_axis]
+    ecdf_tfp = [len([i for i in diff_all_tfp if i > x]) / len(diff_all_tfp) for x in x_axis]
     fig = plt.figure()
     ax = fig.add_subplot(2, 1, 1)
     plt.plot(x_axis, ecdf_tfp)
@@ -197,7 +208,6 @@ if __name__ == "__main__":
     mean_tfp = [np.mean([all_tfp[t][k] for t in range(len(all_tfp))]) for k in range(len(all_tfp[0]))]
     mean_exergy = []
     for country in countries:
-
         data = countries_energy(country=country, starting_year=starting_year, end_year=end_year)
         exergy_level = [
             data["country"][country][starting_year + year]["exergy"]
@@ -205,7 +215,7 @@ if __name__ == "__main__":
         tfp_level = tfp("data/iea/tfp_countries.csv", country=country)[country]
         mean_exergy += [exergy_level]
     mean_exergy = [np.mean([mean_exergy[k][t] for k in range(len(mean_exergy))]) for t in range(len(mean_exergy[0]))]
-    mean_exergy = [mean_exergy[t]/mean_exergy[0] for t in range(len(mean_exergy))]
+    mean_exergy = [mean_exergy[t] / mean_exergy[0] for t in range(len(mean_exergy))]
     df = pd.DataFrame(
         np.array([diff(mean_tfp)[starting_year - 1971:(-1 + end_year - 2020)], diff(mean_exergy)[1:]]).T,
         columns=["TFP", "exergy"])
@@ -219,3 +229,7 @@ if __name__ == "__main__":
     plt.plot(df["TFP"], label="TFP")
     plt.legend()
     plt.show()
+
+if __name__ == "__main__":
+    first_result()
+
