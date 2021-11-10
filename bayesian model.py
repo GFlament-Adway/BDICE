@@ -2,7 +2,7 @@ import pymc3 as pm
 import arviz as az
 import numpy as np
 from utils.utils import med_regression
-from utils.utils_bayes import bayesian_model, get_data
+from utils.utils_bayes import bayesian_model, get_data, predict, generate_scenario
 import matplotlib.pyplot as plt
 import csv
 import matplotlib
@@ -21,6 +21,7 @@ def from_posterior(param, samples, k=100):
     x = np.concatenate([[x[0] - 3 * width], x, [x[-1] + 3 * width]])
     y = np.concatenate([[0], y, [0]])
     return pm.Interpolated(param, x, y)
+
 
 def mse(y_hat, y):
     """
@@ -52,37 +53,13 @@ def mpe(y_hat, y):
     return 100 * np.mean([np.abs((y_hat[k] - y[k]) / y[k]) for k in range(len(y))])
 
 
-def predict(traj_e, country="United States", path="data/posterior_predictive.csv", horizon=30, sample_size=1000,
-            delta_a=-0.02):
-    predictions = []
-    with open(path, "r") as csv_file:
-        names = csv.reader(csv_file)
-        for i, data in enumerate(names):
-            if i == 0:
-                name = data
-                coefs = {j: [] for j in name}
-            else:
-                for j in name:
-                    coefs[j] += [data[name.index(j)]]
-    sample_alpha_0 = [np.random.choice([k for k in range(len(coefs["alpha_0"]))]) for j in range(sample_size)]
-    sample_alpha_1 = [np.random.choice([k for k in range(len(coefs["alpha_0"]))]) for j in range(sample_size)]
-    sample_beta_0 = [np.random.choice([k for k in range(len(coefs["alpha_0"]))]) for j in range(sample_size)]
-
-    predictions += [[np.random.normal(
-        loc=np.sum(
-            [float(coefs["alpha_0"][sample_alpha_0[j]]) * float(coefs["alpha_1"][sample_alpha_1[j]]) ** i for i in range(t)]) +
-            float(coefs["alpha_1"][sample_alpha_1[j]]) ** t * delta_a +
-            np.sum([float(coefs["beta_0"][sample_beta_0[j]]) * traj_e[i] * float(coefs["alpha_1"][sample_alpha_1[j]]) ** (i) for i in range(t)]),
-        scale=np.sum([float(coefs["alpha_1"][sample_alpha_1[j]]) ** (2 * i) * np.mean([float(s) for s in coefs["sigma"]]) for i in range(t)]))
-                    for t in range(1, horizon + 1)] for j in range(sample_size)]
-
-    """
-    
-    """
-    return predictions
-
-
 def reg_median(x, y):
+    """
+
+    :param x:
+    :param y:
+    :return: Median regression of x on y, useless.
+    """
     beta_25, alpha_25 = med_regression(x, y, n_deciles=2, alpha=0.25)
     beta_5, alpha_5 = med_regression(x, y, n_deciles=2, alpha=0.5)
     beta_75, alpha_75 = med_regression(x, y, n_deciles=2, alpha=0.75)
@@ -98,49 +75,66 @@ def reg_median(x, y):
     plt.show()
 
 
-def visu(predictions, countries, idata, y):
+def visu(predictions, countries, idata, y, alpha):
+    """
+    Reproduction of the visualisation of Dice : Measurement without data
+
+    :param predictions: Predictions returned from the function bayesian_model
+    :param countries: list of countries for example : ["United States", "France", ...]
+    :param idata: element returned by bayesian_model
+    :param y: Observed data
+    :return: None
+    """
+
     az.plot_ppc(idata)
     mu_p = predictions["y"]
     lower = [np.sort(mu_p.T[k])[int(len(mu_p.T[k]) * alpha)] for k in range(len(mu_p[0]))]
     upper = [np.sort(mu_p.T[k])[int(len(mu_p.T[k]) * (1 - alpha))] for k in range(len(mu_p[0]))]
+
+    print(mu_p.mean(0))
     print("#################")
     print(mse(mu_p.mean(0), y))
     print(r2(mu_p.mean(0), y))
+    print(len(y))
     print("#################")
-    fig, ax = plt.subplots()
-    ax.plot(mu_p.mean(0), label="Prédictions faites à partir de l'énergie consommée", alpha=0.6)
-    ax.plot(y, ms=4, alpha=0.4, label="Variations historiques de la productivité des facteurs")
-    ax.fill_between([k for k in range(len(mu_p[0]))], lower, upper, alpha=0.1)
-    ax.vlines([(k) * 46 for k in range(len(countries) + 1)], ymin=min(y), ymax=max(y), color="red")
+
+    fig, axes = plt.subplots(nrows=len(countries), sharex=True, figsize=(20,20))
+    plt.xticks([year for year in range(0, 46, 5)], [1972 + year for year in range(0, 46, 5)])
     for k in range(len(countries)):
-        ax.text(x=(k + 0.5) * 46 - len(countries[k]), y=max(y), s=countries[k])
-    ax.legend(loc="lower center")
-    ax.set_ylabel("Variations (%)")
-    plt.show()
+        print(lower[k*46:(k+1)*46])
+        axes[k].grid()
+        axes[k].set_ylabel(countries[k])
+        if k == 0 :
+            axes[k].plot(mu_p.mean(0)[k*46:(k+1)*46], label="Predictions of the variations of the TFP", alpha=0.6)
+            axes[k].plot(y[k*46:(k+1)*46], ms=4, alpha=0.4, label="Observed variations of the TFP")
+        else:
+            axes[k].plot(mu_p.mean(0)[k * 46:(k + 1) * 46], alpha=0.6)
+            axes[k].plot(y[k * 46:(k + 1) * 46], ms=4, alpha=0.4)
+        axes[k].set_ylim(-0.04, 0.04)
+        axes[k].fill_between([k for k in range(46)], lower[k*46:(k+1)*46], upper[k*46:(k+1)*46], alpha=0.1, color="blue")
+
+    #ax.vlines([(k) * 46 for k in range(len(countries) + 1)], ymin=min(y), ymax=max(y), color="red")
+    lines_labels = [ax.get_legend_handles_labels() for ax in axes]
+    lines, labels = [sum(lol, []) for lol in zip(*lines_labels)]
+    fig.legend(lines, labels, loc="lower center")
+    plt.draw()
 
 
-if __name__ == "__main__":
-    print(pm.__version__)
-    print(az.__version__)
-    plt.style.use('ggplot')
-    font = {'family': 'normal',
-            'weight': 'bold',
-            'size': 10}
+def show_predictions():
+    """
 
-    matplotlib.rc('font', **font)
+    Shows DICE model with different TFP paths.
 
-
-    horizon = 30
-    alpha=0.1
+    :return:
+    """
     preds = np.array(predict([np.log(1 - 0.04) for _ in range(horizon)], country="United States", sample_size=500,
-                    horizon=horizon, delta_a=0)).T
+                             horizon=horizon, delta_a=0)).T
 
     preds_g = np.array(predict([np.log(1 + 0.04) for _ in range(horizon)], country="United States", sample_size=500,
-                    horizon=horizon, delta_a=0)).T
-
+                               horizon=horizon, delta_a=0)).T
 
     q_5 = [np.sort(preds[t])[int(len(preds[t]) * alpha)] for t in range(horizon)]
-    q_95 = [np.sort(preds[t])[int(len(preds[t]) * (1-alpha))] for t in range(horizon)]
+    q_95 = [np.sort(preds[t])[int(len(preds[t]) * (1 - alpha))] for t in range(horizon)]
 
     plt.figure()
     plt.plot(preds, color="blue", alpha=0.01)
@@ -152,9 +146,8 @@ if __name__ == "__main__":
     plt.legend(loc="upper right")
     plt.draw()
 
-
     q_g_5 = [np.sort(preds_g[t])[int(len(preds[t]) * alpha)] for t in range(horizon)]
-    q_g_95 = [np.sort(preds_g[t])[int(len(preds[t]) * (1-alpha))] for t in range(horizon)]
+    q_g_95 = [np.sort(preds_g[t])[int(len(preds[t]) * (1 - alpha))] for t in range(horizon)]
 
     plt.figure()
     plt.plot(preds_g, color="blue", alpha=0.01)
@@ -166,13 +159,12 @@ if __name__ == "__main__":
     plt.legend(loc="upper right")
     plt.draw()
 
-
     dice_q_5 = DICE(tfp=q_5)
     dice_q_95 = DICE(tfp=q_95)
     dice_med = DICE(tfp=[np.median(preds[t]) for t in range(horizon)])
     dice_med_growth = DICE(tfp=[np.median(preds_g[t]) for t in range(horizon)])
-    dice_med_growth_q_5 = DICE(tfp=[np.sort(preds_g[t])[int(alpha*len(preds_g[t]))] for t in range(horizon)])
-    dice_med_growth_q_95 = DICE(tfp=[np.sort(preds_g[t])[int((1-alpha)*len(preds_g[t]))] for t in range(horizon)])
+    dice_med_growth_q_5 = DICE(tfp=[np.sort(preds_g[t])[int(alpha * len(preds_g[t]))] for t in range(horizon)])
+    dice_med_growth_q_95 = DICE(tfp=[np.sort(preds_g[t])[int((1 - alpha) * len(preds_g[t]))] for t in range(horizon)])
     dice = DICE()
     for _ in range(len(q_5)):
         dice_q_5.step()
@@ -187,31 +179,86 @@ if __name__ == "__main__":
     plt.title("TFP variations")
     plt.plot(dice.parameters["tfp"], color="blue", label="Nordhaus assumptions")
     plt.plot(dice_med_growth.parameters["tfp"], color="red", alpha=1, label="Median TFP value with exergy growth")
-    plt.plot(dice_med_growth_q_95.parameters["tfp"], color="red", alpha=0.5, linestyle=":", label="Quantile with exergy growth")
+    plt.plot(dice_med_growth_q_95.parameters["tfp"], color="red", alpha=0.5, linestyle=":",
+             label="Quantile with exergy growth")
     plt.plot(dice_med_growth_q_5.parameters["tfp"], color="red", alpha=0.5, linestyle=":")
-    plt.plot(dice_q_5.parameters["tfp"], color="green", alpha=0.5, linestyle = ":", label="Quantile with exergy decline")
+    plt.plot(dice_q_5.parameters["tfp"], color="green", alpha=0.5, linestyle=":", label="Quantile with exergy decline")
     plt.plot(dice_q_95.parameters["tfp"], color="green", alpha=0.5, linestyle=":")
     plt.plot(dice_med.parameters["tfp"], color="green", alpha=1, label="Median TFP value with exergy decline")
     plt.xlabel("Years of prediction")
     plt.legend()
     plt.draw()
-    
 
     plt.figure()
     plt.title("Economic output")
     plt.plot(dice.parameters["output"], color="blue", label="Nordhaus assumptions")
     plt.plot(dice_med_growth.parameters["output"], color="red", alpha=1, label="Output with exergy growth")
-    plt.plot(dice_med_growth_q_95.parameters["output"], color="red", alpha=0.5, linestyle=":", label="Quantile with exergy growth")
+    plt.plot(dice_med_growth_q_95.parameters["output"], color="red", alpha=0.5, linestyle=":",
+             label="Quantile with exergy growth")
     plt.plot(dice_med_growth_q_5.parameters["output"], color="red", alpha=0.5, linestyle=":")
-    plt.plot(dice_q_5.parameters["output"], color="green", alpha=0.5, linestyle=":", label="Quantile with exergy decline")
-    plt.plot(dice_q_95.parameters["output"],color="green", alpha=0.5, linestyle=":")
+    plt.plot(dice_q_5.parameters["output"], color="green", alpha=0.5, linestyle=":",
+             label="Quantile with exergy decline")
+    plt.plot(dice_q_95.parameters["output"], color="green", alpha=0.5, linestyle=":")
     plt.plot(dice_med.parameters["output"], color="green", alpha=1, label="Median output value with exergy decline")
     plt.xlabel("Years of prediction")
     plt.ylabel("Trillions of $2010")
     plt.legend()
     plt.draw()
 
+
+if __name__ == "__main__":
+    print(pm.__version__)
+    print(az.__version__)
+    font = {'family': 'normal',
+            'weight': 'bold',
+            'size': 10}
+
+    matplotlib.rc('font', **font)
+
+    horizon = 29
+    alpha = 0.1
+    #Tune : Number of steps to reach
+    tune = 100
+    #Number of draws from the posterior density
+    draws = 200
+    #Which model should be used (eg described in : 2.3.3 or 2.3.4)
+    #Parameters
+    include_world_exergy = True
+    #Scenario to be used
+    scenario = "scenario_1.json"
+    #Countries to be considered
+    countries = ["United States", "Japan", "Italy", "Germany", "United Kingdom", "France", "Canada"]
+
+
+    data_pred = generate_scenario(scenario, countries, horizon)
     data = get_data()
-    predictions, countries, idata, y = bayesian_model(data=data)
-    visu(predictions, countries, idata, y)
+    predictions, countries, idata, y, trace = bayesian_model(data=data, data_pred=data_pred, register_data=True,
+                                                             tune=tune, draws=draws,
+                                                             include_world_exergy=include_world_exergy)
+
+    fig, axs = plt.subplots(3, 3, figsize=(14, 14))
+    for k in range(3):
+        for i in range(3):
+            axs[k, i].set_axis_off()
+    coords = [[0, 0], [0, 1], [1, 0], [1, 1], [2, 0], [0, 2], [1, 2], [2, 1]]
+    visu(predictions, countries, idata, data["y"], alpha=alpha)
+    plt.figure()
+    for country in countries:
+        axs[coords[countries.index(country)][0], coords[countries.index(country)][1]].grid()
+        axs[coords[countries.index(country)][0], coords[countries.index(country)][1]].set_ylim(-0.038, 0.038)
+        axs[coords[countries.index(country)][0], coords[countries.index(country)][1]].set_axis_on()
+        axs[coords[countries.index(country)][0], coords[countries.index(country)][1]].set_title(country)
+        lower = [np.sort([trace["Y_{t}".format(t=t)][k][countries.index(country)] for k in range(draws)])[
+                     int(alpha * draws)] for t in
+                 range(horizon)]
+        upper = [np.sort([trace["Y_{t}".format(t=t)][k][countries.index(country)] for k in range(draws)])
+                     [int((1 - alpha) * draws)] for t in
+                 range(horizon)]
+
+        axs[coords[countries.index(country)][0], coords[countries.index(country)][1]].fill_between([k for k in range(horizon)], lower, upper, color="blue", alpha=0.1)
+
+        axs[coords[countries.index(country)][0], coords[countries.index(country)][1]].plot(
+            [np.mean([trace["Y_{t}".format(t=t)][k][countries.index(country)] for k in range(draws)]) for t in
+             range(horizon)], color="red")
+    fig.tight_layout()
     plt.show()

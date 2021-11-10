@@ -1,0 +1,82 @@
+Index: bayesian model.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import pymc3 as pm\nimport arviz as az\nimport numpy as np\nfrom utils.utils import tfp, countries_energy, diff, get_countries\nimport matplotlib.pyplot as plt\nimport pandas as pd\nimport theano\n\n\ndef mse(y_hat, y):\n    \"\"\"\n\n    :param y_hat: predicted values\n    :param y: observed values\n    :return: mean squared error\n    \"\"\"\n    return np.mean([(y_hat[k] - y[k]) ** 2 for k in range(len(y))])\n\n\ndef r2(y_hat, y):\n    \"\"\"\n\n    :param y_hat: predicted values\n    :param y: observed values\n    :return: R^2\n    \"\"\"\n    sum_var = np.sum([(y[k] - np.mean(y)) ** 2 for k in range(len(y))])\n    return 1 - np.sum([((y_hat[k] - y[k]) ** 2) for k in range(len(y_hat))]) / sum_var\n\n\ndef mpe(y_hat, y):\n    \"\"\"\n    :param y_hat: predicted values\n    :param y: observed values\n    :return: mean percentage error\n    \"\"\"\n    return 100 * np.mean([np.abs((y_hat[k] - y[k]) / y[k]) for k in range(len(y))])\n\n\nif __name__ == \"__main__\":\n    print(pm.__version__)\n    print(az.__version__)\n\n    countries = get_countries(\"data/iea/tfp_countries.csv\")[:-2]\n    countries = [\"United States\", \"Japan\", \"Italy\", \"Germany\", \"United Kingdom\", \"France\", \"Canada\"]\n\n    starting_year = 1971\n    end_year = 2019\n    y = np.array(\n        [diff(tfp(\"data/iea/tfp_countries.csv\", country=country)[country][1:-1]) for country in countries])\n    x = [countries_energy(country=country, starting_year=starting_year, end_year=end_year) for country in countries]\n    x = [[x[k][\"country\"][country][starting_year + year + 1][\"exergy\"]\n          for year in range(end_year - starting_year - 1)] for k, country in enumerate(countries)]\n    x = np.array([diff([v / x[k][0] for v in x[k]]) for k, country in enumerate(countries)])\n    country_id = np.array([[k for _ in range(x.shape[1])] for k in range(len(countries))]).flatten()\n    x_exergy = np.array(\n        [diff(tfp(\"data/iea/tfp_countries.csv\", country=country)[country][:-2]) for country in countries])\n\n    x = x.flatten()\n    y = y.flatten()\n    x_exergy = x_exergy.flatten()\n\n    alpha = 0.05\n\n    with pm.Model() as model:\n        # Define priors\n\n        sigma = pm.HalfCauchy(\"sigma\", beta=10, shape=len(countries))\n        intercept = pm.Normal(\"Intercept\", 0, sigma=0.1, shape=len(countries))\n\n        mu_x = pm.Normal(\"prior exergy coefficient\", 0.1, sigma=0.1)\n        sigma_x_coef = pm.HalfCauchy(\"sigma_exergy_coef\", beta=5)\n\n        mu_ar = pm.Normal(\"priori ar\", 0, sigma=0.1)\n        sigma_x_ar = pm.HalfCauchy(\"sigma_ar_coef\", beta=5)\n\n        x_coeff = pm.Normal(\"exergy coefficient\", mu_x, sigma=sigma_x_coef, shape=len(countries))\n        x_ar = pm.Normal(\"ar\", mu_ar, sigma=sigma_x_ar, shape=len(countries))\n\n        # Define likelihood\n        likelihood = pm.Normal(\"y\",\n                               mu=intercept[country_id] + x_coeff[country_id] * x + x_ar[country_id] * x_exergy,\n                               sigma=sigma[country_id],\n                               observed=y)\n        # Inference!\n        trace = pm.sample(draws=100, tune=20000, cores=2)\n\n    with model:\n        predictions = pm.sample_posterior_predictive(trace, var_names=[\"Intercept\", \"exergy coefficient\", 'ar', \"y\"],\n                                                     random_seed=5)\n\n        az.plot_trace(trace, var_names=['sigma', 'exergy coefficient', 'ar'], legend=True)\n        idata = az.from_pymc3(model=model, posterior_predictive=predictions)\n        az.plot_ppc(idata)\n        mu_p = predictions[\"y\"]\n        print(mu_p.shape)\n        lower = [np.sort(mu_p.T[k])[int(len(mu_p.T[k])*alpha)] for k in range(len(mu_p[0]))]\n        upper = [np.sort(mu_p.T[k])[int(len(mu_p.T[k]) * (1-alpha))] for k in range(len(mu_p[0]))]\n        print(\"#################\")\n        print(mse(mu_p.mean(0), y))\n        print(r2(mu_p.mean(0), y))\n        print(\"#################\")\n        fig, ax = plt.subplots()\n        ax.plot(mu_p.mean(0), label=\"Mean TFP prediction\", alpha=0.6)\n        ax.plot(y, ms=4, alpha=0.4, label=\"Data\")\n        ax.fill_between([k for k in range(len(mu_p[0]))], lower, upper, alpha=0.1)\n        ax.legend()\n        plt.show()\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/bayesian model.py b/bayesian model.py
+--- a/bayesian model.py	(revision 0d24e0bb792cf27f6ed7f1800029f1834ee43731)
++++ b/bayesian model.py	(date 1632749800828)
+@@ -3,6 +3,8 @@
+ import numpy as np
+ from utils.utils import tfp, countries_energy, diff, get_countries
+ import matplotlib.pyplot as plt
++import matplotlib
++
+ import pandas as pd
+ import theano
+ 
+@@ -64,18 +66,19 @@
+ 
+     with pm.Model() as model:
+         # Define priors
+-
+         sigma = pm.HalfCauchy("sigma", beta=10, shape=len(countries))
+-        intercept = pm.Normal("Intercept", 0, sigma=0.1, shape=len(countries))
++        intercept = pm.Normal(r"$\alpha_0$", 0, sigma=1, shape=len(countries))
+ 
+-        mu_x = pm.Normal("prior exergy coefficient", 0.1, sigma=0.1)
+-        sigma_x_coef = pm.HalfCauchy("sigma_exergy_coef", beta=5)
++        x_offset = pm.Normal('x_offset', mu=0, sd=1, shape=len(countries))
++        mu_x = pm.Normal("prior exergy coefficient", 0, sigma=1)
++        sigma_x_coef = pm.HalfCauchy("sigma_exergy_coef", beta=10)
+ 
+-        mu_ar = pm.Normal("priori ar", 0, sigma=0.1)
+-        sigma_x_ar = pm.HalfCauchy("sigma_ar_coef", beta=5)
++        ar_offset = pm.Normal('ar_offset', mu=0, sd=1, shape=len(countries))
++        mu_ar = pm.Normal(r"$\mu_{\alpha_1}$", 0, sigma=1)
++        sigma_x_ar = pm.HalfCauchy("sigma_ar_coef", beta=10)
+ 
+-        x_coeff = pm.Normal("exergy coefficient", mu_x, sigma=sigma_x_coef, shape=len(countries))
+-        x_ar = pm.Normal("ar", mu_ar, sigma=sigma_x_ar, shape=len(countries))
++        x_coeff = pm.Normal(r"$\beta_0$", mu_x + x_offset, sigma=sigma_x_coef, shape=len(countries))
++        x_ar = pm.Normal(r"$\alpha_1$", mu_ar + ar_offset, sigma=sigma_x_ar, shape=len(countries))
+ 
+         # Define likelihood
+         likelihood = pm.Normal("y",
+@@ -83,19 +86,19 @@
+                                sigma=sigma[country_id],
+                                observed=y)
+         # Inference!
+-        trace = pm.sample(draws=100, tune=20000, cores=2)
++        trace = pm.sample(draws=1000, cores=2, chains=2, target_accept=0.95)
+ 
+     with model:
+-        predictions = pm.sample_posterior_predictive(trace, var_names=["Intercept", "exergy coefficient", 'ar', "y"],
++        predictions = pm.sample_posterior_predictive(trace, var_names=[r"$\alpha_0$", r"$\beta_0$", r"$\alpha_1$", "y"],
+                                                      random_seed=5)
+ 
+-        az.plot_trace(trace, var_names=['sigma', 'exergy coefficient', 'ar'], legend=True)
++        az.plot_trace(trace, var_names=[r"$\alpha_0$", r"$\beta_0$", r"$\alpha_1$"], divergences=None, legend=True, circ_var_names=countries)
+         idata = az.from_pymc3(model=model, posterior_predictive=predictions)
+         az.plot_ppc(idata)
+         mu_p = predictions["y"]
+         print(mu_p.shape)
+-        lower = [np.sort(mu_p.T[k])[int(len(mu_p.T[k])*alpha)] for k in range(len(mu_p[0]))]
+-        upper = [np.sort(mu_p.T[k])[int(len(mu_p.T[k]) * (1-alpha))] for k in range(len(mu_p[0]))]
++        lower = [np.sort(mu_p.T[k])[int(len(mu_p.T[k]) * alpha)] for k in range(len(mu_p[0]))]
++        upper = [np.sort(mu_p.T[k])[int(len(mu_p.T[k]) * (1 - alpha))] for k in range(len(mu_p[0]))]
+         print("#################")
+         print(mse(mu_p.mean(0), y))
+         print(r2(mu_p.mean(0), y))
+@@ -104,5 +107,8 @@
+         ax.plot(mu_p.mean(0), label="Mean TFP prediction", alpha=0.6)
+         ax.plot(y, ms=4, alpha=0.4, label="Data")
+         ax.fill_between([k for k in range(len(mu_p[0]))], lower, upper, alpha=0.1)
+-        ax.legend()
++        ax.vlines([(k + 1) * 47 for k in range(len(countries))], ymin=min(y), ymax=max(y), color="red")
++        for k in range(len(countries)):
++            ax.text(x=(k + 0.5) * 47 - len(countries[k]), y=max(y), s=countries[k])
++        ax.legend(loc="lower center")
+         plt.show()

@@ -1,7 +1,8 @@
 import csv
 import numpy as np
 import json
-
+import os
+from scipy.stats import ks_2samp
 
 def med_regression(x,y, n_deciles=3, alpha=0.5):
     """
@@ -94,7 +95,7 @@ def countries_energy(exergy_coefs_path = "data/iea/exergy_coefs.json", energy_pa
                     'Renewable sources']
             energy_data["country"][country][year]['Wind, solar, etc.'] = energy_data["country"][country][year]['Renewable sources'] - energy_data["country"][country][year]["Hydro"]
             energy_data["country"][country][year]["exergy"] = np.sum([exergy_coef[ener]*energy_data["country"][country][year][ener] for ener in list(exergy_coef.keys())])
-
+    energy_data = add_emissions(energy_data, country)
     return energy_data
 
 def tfp(path="data/iea/tfp_countries.csv", country="France"):
@@ -108,6 +109,28 @@ def tfp(path="data/iea/tfp_countries.csv", country="France"):
                 data[country] += [float(row[index].replace(",","."))]
     return data
 
+def get_scenario(scenario, path_exergy_var="scenario/var_exergy_", exergy_coefs_path = "data/iea/exergy_coefs.json", energy_path="data/iea/IEA_all_countries/countries_energy_balance.csv", country="United States"):
+
+
+    assert country in ["France", "United States", "United Kingdom", "Germany", "Italy", "Canada", "Japan"]
+    path_exergy_var = path_exergy_var + scenario
+    assert os.path.exists(path_exergy_var)
+
+
+    energy_dataset = countries_energy(exergy_coefs_path=exergy_coefs_path, energy_path=energy_path, country=country)
+    with open(path_exergy_var, "r") as json_file:
+        data_exergy_scenario = json.load(json_file)
+    exergy_coef = get_exergy_coefs(exergy_coefs_path)
+    sources = list(data_exergy_scenario[country]["2020"].keys())
+    for year in range(2020, 2051):
+        #2019 is the last observed year
+        energy_dataset["country"][country].update({year : {source: energy_dataset["country"][country][year - 1][source]*(1 + data_exergy_scenario[country][str(year)][source]) for source in sources}})
+        energy_dataset["country"][country][year]["exergy"] = np.sum(
+            [exergy_coef[ener] * energy_dataset["country"][country][year][ener] for ener in sources])
+        add_emissions(energy_dataset, country)
+
+    return [energy_dataset["country"][country][year]["exergy"] for year in range(2020, 2051)], [energy_dataset["country"][country][year]["emissions"] for year in range(2020, 2051)]
+
 def diff(data):
     return ([data[t] - data[t - 1] for t in range(1, len(data))])
 
@@ -118,18 +141,6 @@ def compute_tfp_level(variations):
         real_tfp += [real_tfp[k - 1] * (1 + variations[k] / 100)]
     log_tfp = [np.log(tfp) for tfp in real_tfp]
     return log_tfp
-
-
-def get_data(path="data/energy.csv"):
-    data = {}
-    with open(path, "r") as csv_file:
-        raw_data = csv.reader(csv_file, delimiter=";")
-        for row in raw_data:
-            try:
-                data.update({row[0]: float(row[1].replace(",", "."))})
-            except ValueError:
-                print(row)
-    return data
 
 
 def get_exergy_iea(path="data/iea/exergy_from_iea_data.csv"):
@@ -183,8 +194,31 @@ def get_tfp(path="../data/tfp_data"):
     return [float(value.replace("\n", "").replace(",", ".").replace('"', '')) for value in data]
 
 
+def kolmogorov_distance(p,q):
+    return ks_2samp(p,q)
 
+
+def add_emissions(energie, country):
+
+    years = list(energie["country"][country].keys())
+    emissions_factor = {"Coal": 820, "Natural gas": 490, "Crude oil": 400, "Nuclear": 12, "Hydro": 24, "Biofuels and waste": 230, 'Wind, solar, etc.': 25}
+    sources = list(emissions_factor.keys())
+
+    for year in years:
+        emissions = 0
+        for source in sources:
+            emissions += energie["country"][country][year][source]*emissions_factor[source]*11630/1000 #kg to tonnes
+        energie["country"][country][year].update({"emissions": emissions})
+    return energie
 
 if __name__ == "__main__":
-    med_regression([1,2,3,4,5], [2,3,4,4,5])
-    
+    country = "France"
+    energie = countries_energy(exergy_coefs_path
+     = "../data/iea/exergy_coefs.json", energy_path="../data/iea/IEA_all_countries/countries_energy_balance.csv", country=country)
+
+    emissions = [energie["country"][country][year]["emissions"] for year in range(1971, 2019)]
+    print(emissions)
+    import matplotlib.pyplot as plt
+    plt.figure()
+    plt.plot(emissions)
+    plt.show()

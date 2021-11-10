@@ -1,0 +1,1963 @@
+{
+  "France": {
+      "2020": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2021": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2022": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2023": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2024": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2025": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2026": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2027": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2028": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2029": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2030": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2031": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2032": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2033": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2034": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2035": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2036": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2037": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2038": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2039": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2040": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2041": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2042": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2043": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2044": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2045": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2046": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2047": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2048": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2049": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2050": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    }},
+    "Germany": {
+      "2020": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2021": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2022": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2023": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2024": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2025": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2026": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2027": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2028": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2029": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2030": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2031": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2032": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2033": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2034": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2035": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2036": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2037": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2038": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2039": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2040": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2041": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2042": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2043": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2044": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2045": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2046": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2047": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2048": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2049": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2050": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    }},
+    "United States": {
+      "2020": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2021": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2022": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2023": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2024": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2025": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2026": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2027": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2028": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2029": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2030": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2031": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2032": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2033": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2034": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2035": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2036": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2037": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2038": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2039": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2040": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2041": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2042": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2043": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2044": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2045": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2046": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2047": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2048": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2049": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2050": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    }},
+    "United Kingdom": {
+      "2020": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2021": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2022": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2023": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2024": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2025": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2026": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2027": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2028": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2029": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2030": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2031": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2032": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2033": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2034": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2035": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2036": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2037": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2038": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2039": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2040": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2041": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2042": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2043": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2044": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2045": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2046": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2047": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2048": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2049": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2050": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    }},
+    "Italy": {
+      "2020": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2021": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2022": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2023": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2024": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2025": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2026": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2027": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2028": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2029": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2030": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2031": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2032": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2033": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2034": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2035": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2036": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2037": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2038": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2039": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2040": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2041": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2042": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2043": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2044": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2045": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2046": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2047": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2048": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2049": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2050": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    }},
+    "Canada": {
+      "2020": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2021": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2022": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2023": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2024": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2025": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2026": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2027": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2028": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2029": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2030": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2031": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2032": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2033": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2034": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2035": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2036": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2037": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2038": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2039": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2040": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2041": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2042": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2043": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2044": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2045": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2046": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2047": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2048": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2049": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2050": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    }},
+    "Japan": {
+      "2020": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2021": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2022": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2023": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2024": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2025": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2026": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2027": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2028": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2029": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2030": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2031": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2032": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2033": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2034": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2035": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2036": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2037": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2038": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2039": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2040": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2041": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2042": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2043": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2044": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2045": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2046": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2047": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2048": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2049": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    },
+    "2050": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": -0.03,
+      "Hydro": 0,
+      "Biofuels and waste": 0,
+      "Wind, solar, etc.": 0.05
+    }
+  }
+}
