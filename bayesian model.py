@@ -218,9 +218,9 @@ if __name__ == "__main__":
     horizon = 29
     alpha = 0.1
     #Tune : Number of steps to reach
-    tune = 100
+    tune = 10000
     #Number of draws from the posterior density
-    draws = 200
+    draws = 2000
     #Which model should be used (eg described in : 2.3.3 or 2.3.4)
     #Parameters
     include_world_exergy = True

@@ -1,30 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac449694-7a99-4e40-b9c8-db3ed34e2217" name="Changes" comment="bayesian model">
-      <change afterPath="$PROJECT_DIR$/data/Canada/posterior_predictive_True.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/France/posterior_predictive_True.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Germany/posterior_predictive_True.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Italy/posterior_predictive_True.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Japan/posterior_predictive_True.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/United Kingdom/posterior_predictive_True.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/United States/posterior_predictive_True.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scenario/var_exergy_scenario_1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scenario/var_exergy_scenario_2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/ca_no_world_exergy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_trace_no_world_exergy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/predictions_prop_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/predictions_world_exergy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/tfp_no_world.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/tfp_no_world_exergy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/tfp_no_world_scenario_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/tfp_world.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/tfp_world_scneario_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/trace_plot_world_exergy.png" afterDir="false" />
+    <list default="true" id="ac449694-7a99-4e40-b9c8-db3ed34e2217" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/data/Canada/posterior_predictive_False_tune_10000_draws_2000_model_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Canada/posterior_predictive_True_tune_10000_draws_2000_model_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/France/posterior_predictive_False_tune_10000_draws_2000_model_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/France/posterior_predictive_True_tune_10000_draws_2000_model_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Germany/posterior_predictive_False_tune_10000_draws_2000_model_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Germany/posterior_predictive_True_tune_10000_draws_2000_model_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Italy/posterior_predictive_False_tune_10000_draws_2000_model_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Italy/posterior_predictive_True_tune_10000_draws_2000_model_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Japan/posterior_predictive_False_tune_10000_draws_2000_model_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Japan/posterior_predictive_True_tune_10000_draws_2000_model_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/United Kingdom/posterior_predictive_False_tune_10000_draws_2000_model_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/United Kingdom/posterior_predictive_True_tune_10000_draws_2000_model_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/United States/posterior_predictive_False_tune_10000_draws_2000_model_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/United States/posterior_predictive_True_tune_10000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bayesian model.py" beforeDir="false" afterPath="$PROJECT_DIR$/bayesian model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sorties/tfp_exergy.png" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/tfp_exergy.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tfp_pred_paris.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tfp_pred_paris.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Canada/posterior_predictive.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Canada/posterior_predictive_False.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Canada/posterior_predictive_True.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/France/posterior_predictive.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/France/posterior_predictive_False.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/France/posterior_predictive_True.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Germany/posterior_predictive.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Germany/posterior_predictive_False.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Germany/posterior_predictive_True.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Italy/posterior_predictive.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Italy/posterior_predictive_False.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Italy/posterior_predictive_True.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Japan/posterior_predictive.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Japan/posterior_predictive_False.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Japan/posterior_predictive_True.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/United Kingdom/posterior_predictive.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/United Kingdom/posterior_predictive_False.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/United Kingdom/posterior_predictive_True.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/United States/posterior_predictive.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/United States/posterior_predictive_False.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/United States/posterior_predictive_True.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/trace_plot_world_exergy.png" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/trace_plot_world_exergy.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/utils_bayes.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils_bayes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -196,7 +211,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632681574236</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="bayesian model">
+      <created>1636539819290</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1636539819290</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -166,7 +166,7 @@ def get_data(countries = None):
     data["countries"], data["country_id"], data["x"], data["x_exergy"], data["x_us"], data["y"] = countries, country_id, x, x_exergy, x_us, y
     return data
 
-def bayesian_model(data, data_pred, register_data = True, tune=500, draws=1000, include_world_exergy = False, horizon=30, model=1):
+def bayesian_model(data, data_pred, register_data = True, tune=500, draws=1000, include_world_exergy = False, horizon=30, model_number=1):
     """
 
     :param data: Data dictionnary as returned by the function get_data()
@@ -258,6 +258,6 @@ def bayesian_model(data, data_pred, register_data = True, tune=500, draws=1000, 
 
     if register_data:
         for country in countries:
-            register(idata, countries.index(country), country, world_exergy=include_world_exergy, tuning=tune, draw=draws, model=model)
+            register(idata, countries.index(country), country, world_exergy=include_world_exergy, tuning=tune, draw=draws, model=model_number)
 
     return predictions, countries, idata, y, trace
