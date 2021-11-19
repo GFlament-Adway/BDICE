@@ -4,9 +4,7 @@ import arviz as az
 from theano import tensor as tt
 from utils.utils import get_countries, diff, countries_energy, tfp, get_scenario
 import csv
-import scipy.stats as stats
-from fastprogress import fastprogress
-
+import os
 
 def generate_scenario(scenario, countries, horizon):
 
@@ -68,7 +66,7 @@ def pred_posterior(idata, country_id, delta_a, delta_e, delta_e_w, world_exergy=
     #equivalent of np.add : np.array([1,2,3]) + np.array([1,2,3]) = array([2,4,6])
     return post
 
-def register(idata, country_id, country_name, tuning, draw, model, world_exergy=True):
+def register(idata, country_id, country_name, tuning, draw, param, world_exergy=True):
     """
     Register data. Should not be used alone.
     :param idata:
@@ -96,12 +94,36 @@ def register(idata, country_id, country_name, tuning, draw, model, world_exergy=
         rows = np.array([alpha_0, alpha_1, beta_0, sigma]).T
 
 
+    if os.path.exists("sorties/model_{model_number}/posterior_data/{country}".format(model_number=param["model_name"], country=country_name)):
+        k = len(os.listdir("sorties/model_{model_number}/posterior_data/{country}".format(model_number=param["model_name"], country=country_name)))
+        with open("sorties/model_{model_number}/posterior_data/{country}/posterior_predictive_{world_exergy}_tune_{tune}_draws_{draws}_model_{k}.csv".format(model_number=param["model_name"], tune=tuning, draws=draw, k=k, country=country_name, world_exergy=world_exergy), "w", newline="") as csv_file:
+            write = csv.writer(csv_file)
+            write.writerow(names)
+            for row in rows:
+                write.writerow(row)
+    else:
+        if os.path.exists("sorties/model_{model_number}/posterior_data/".format(model_number=param["model_name"])):
+            os.mkdir(
+                "sorties/model_{model_number}/posterior_data/{country}".format(model_number=param["model_name"], country=country_name))
+        else:
+            if os.path.exists("sorties/model_{model_number}".format(model_number=param["model_name"])):
+                os.mkdir(
+                    "sorties/model_{model_number}/posterior_data".format(model_number=param["model_name"]))
+                os.mkdir(
+                    "sorties/model_{model_number}/posterior_data/{country}".format(model_number=param["model_name"],
+                                                                                  country=country_name))
+            else:
+                os.mkdir("sorties/model_{model_number}".format(model_number=param["model_name"]))
+                os.mkdir(
+                    "sorties/model_{model_number}/posterior_data".format(model_number=param["model_name"]))
+                os.mkdir(
+                    "sorties/model_{model_number}/posterior_data/{country}".format(model_number=param["model_name"], country=country_name))
 
-    with open("data/{country}/posterior_predictive_{world_exergy}_tune_{tune}_draws_{draws}_model_{model}.csv".format(tune=tuning, draws=draw, model=model, country=country_name, world_exergy=world_exergy), "w", newline="") as csv_file:
-        write = csv.writer(csv_file)
-        write.writerow(names)
-        for row in rows:
-            write.writerow(row)
+        with open("sorties/model_{model_number}/posterior_data/{country}/posterior_predictive_{world_exergy}_tune_{tune}_draws_{draws}_model_{k}.csv".format(model_number=param["model_name"], tune=tuning, draws=draw, k=0, country=country_name, world_exergy=world_exergy), "w", newline="") as csv_file:
+            write = csv.writer(csv_file)
+            write.writerow(names)
+            for row in rows:
+                write.writerow(row)
 
 def get_data(countries = None):
     """
@@ -166,7 +188,7 @@ def get_data(countries = None):
     data["countries"], data["country_id"], data["x"], data["x_exergy"], data["x_us"], data["y"] = countries, country_id, x, x_exergy, x_us, y
     return data
 
-def bayesian_model(data, data_pred, register_data = True, tune=500, draws=1000, include_world_exergy = False, horizon=30, model_number=1):
+def bayesian_model(data, data_pred, register_data = True, tune=500, draws=1000, include_world_exergy = False, horizon=30, hyperparams=1):
     """
 
     :param data: Data dictionnary as returned by the function get_data()
@@ -186,56 +208,81 @@ def bayesian_model(data, data_pred, register_data = True, tune=500, draws=1000, 
         trace : Trace as return by pymc3.
     """
 
-    fastprogress.printing = lambda: True
     countries, country_id, x, x_exergy, x_us, y = data["countries"], data["country_id"], data["x"], data["x_exergy"], data["x_us"], data["y"]
     x_pred, x_us_pred = data_pred["x_pred"], data_pred["x_us_pred"]
 
     with pm.Model() as model:
         # Define priors
-        sigma = pm.HalfCauchy(r"$\sigma$", beta=1, shape=len(countries))
-        intercept = pm.Normal(r"$\alpha_0$", 0, sigma=0.1, shape=len(countries))
+        sigma = pm.HalfCauchy(r"$\sigma$", beta=hyperparams["sigma"], shape=len(countries))
+        intercept = pm.Normal(r"$\alpha_0$", hyperparams["mu_alpha_0"], sigma=hyperparams["sigma_mu_alpha_0"], shape=len(countries))
 
-        x_offset = pm.Normal('x_offset', mu=0, sigma=0.1, shape=len(countries))
-        mu_x = pm.Normal("prior exergy coefficient", 0, sigma=0.1)
+        #x_offset = pm.Normal('x_offset', mu=0, sigma=0.1, shape=len(countries))
+        mu_x = pm.Normal("prior exergy coefficient", hyperparams["mu_beta_0"], sigma=hyperparams["sigma_mu_beta_0"])
         #mu_x = pm.Uniform("prior exergy coefficient", lower=-1, upper=1)
-        sigma_x_coef = pm.HalfCauchy("sigma_exergy_coef", beta=1)
+        sigma_x_coef = pm.HalfCauchy("sigma_exergy_coef", beta=hyperparams["sigma_beta_0"])
 
-        ar_offset = pm.Normal('ar_offset', mu=0, sigma=0.1, shape=len(countries))
-        mu_ar = pm.Normal(r"$\mu_{\alpha_1}$", 0, sigma=0.1)
-        sigma_x_ar = pm.HalfCauchy("sigma_ar_coef", beta=1)
+        #ar_offset = pm.Normal('ar_offset', mu=0, sigma=0.1, shape=len(countries))
+        mu_ar = pm.Normal(r"$\mu_{\alpha_1}$", hyperparams["mu_alpha_1"], sigma=hyperparams["sigma_mu_alpha_1"])
+        sigma_x_ar = pm.HalfCauchy("sigma_ar_coef", beta=hyperparams["sigma_alpha_1"])
 
         if include_world_exergy:
-            sigma_x_us = pm.HalfCauchy("sigma_x_us", beta=1)
-            mu_x_us = pm.Normal("mu_x_us", mu=0, sd=0.1, shape=len(countries))
+            sigma_x_us = pm.HalfCauchy("sigma_x_us", beta=hyperparams["sigma_beta_1"])
+            mu_x_us = pm.Normal("mu_x_us", mu=hyperparams["mu_beta_1"], sd=hyperparams["sigma_mu_beta_1"], shape=len(countries))
             x_us_coef = pm.Normal(r"$\beta_1$", mu=mu_x_us, sigma=sigma_x_us, shape=len(countries))
 
 
-        x_coeff = pm.Normal(r"$\beta_0$", mu_x + x_offset, sigma=sigma_x_coef, shape=len(countries))
-        x_ar = pm.Normal(r"$\alpha_1$", mu_ar + ar_offset, sigma=sigma_x_ar, shape=len(countries))
+        #x_coeff = pm.Normal(r"$\beta_0$", mu_x + x_offset, sigma=sigma_x_coef, shape=len(countries))
+        #x_ar = pm.Normal(r"$\alpha_1$", mu_ar + ar_offset, sigma=sigma_x_ar, shape=len(countries))
+        x_coeff = pm.Normal(r"$\beta_0$", mu_x, sigma=sigma_x_coef, shape=len(countries))
+        x_ar = pm.Normal(r"$\alpha_1$", mu_ar, sigma=sigma_x_ar, shape=len(countries))
         # Define likelihood
         #print(x_coeff * x)
         if include_world_exergy:
-            likelihood = pm.Normal("y",
+            if hyperparams["posterior distribution"] == "Cauchy":
+                likelihood = pm.Cauchy("y",
+                                   alpha=intercept[country_id] + x_coeff[country_id] * x + x_ar[country_id] * x_exergy
+                                      + x_us_coef[country_id] * x_us,
+                                   beta=sigma[country_id],
+                                   observed=y)
+            else:
+                likelihood = pm.Normal("y",
                                    mu=intercept[country_id] + x_coeff[country_id] * x + x_ar[country_id] * x_exergy
                                       + x_us_coef[country_id] * x_us,
                                    sigma=sigma[country_id],
                                    observed=y)
             for t in range(horizon):
                 y_preds = [x_exergy[(k+1)*len(x_exergy)//7 - 1] for k in range(len(countries))]
-                y_preds += [pm.Normal("Y_{t}".format(t=t),
+                if hyperparams["posterior distribution"] == "Cauchy":
+                    y_preds += [pm.Cauchy("Y_{t}".format(t=t),
+                                          alpha=intercept + x_coeff * x_pred[t] + x_ar * y_preds[-1]
+                                             + x_us_coef * x_us_pred[t],
+                                          beta=sigma, shape=(len(countries),))]
+                else:
+                    y_preds += [pm.Normal("Y_{t}".format(t=t),
                                       mu=intercept + x_coeff * x_pred[t] + x_ar * y_preds[-1]
                                          + x_us_coef * x_us_pred[t],
                                       sigma=sigma, shape=(len(countries),))]
         else :
-            likelihood = pm.Normal("y",
+            if hyperparams["posterior distribution"] == "Cauchy":
+                likelihood = pm.Cauchy("y",
+                                       alpha=intercept[country_id] + x_coeff[country_id] * x + x_ar[country_id] * x_exergy,
+                                       beta=sigma[country_id],
+                                       observed=y)
+            else:
+                likelihood = pm.Normal("y",
                                    mu=intercept[country_id] + x_coeff[country_id] * x + x_ar[country_id] * x_exergy,
                                    sigma=sigma[country_id],
                                    observed=y)
             for t in range(horizon):
-                y_preds = [x_exergy[(k+1)*len(x_exergy)//7 - 1] for k in range(len(countries))]
-                y_preds += [pm.Normal("Y_{t}".format(t=t),
-                                      mu=intercept + x_coeff * x_pred[t] + x_ar * y_preds[-1],
-                                      sigma=sigma, shape=(len(countries),))]
+                y_preds = [x_exergy[(k + 1) * len(x_exergy) // 7 - 1] for k in range(len(countries))]
+                if hyperparams["posterior distribution"] == "Cauchy":
+                    y_preds += [pm.Cauchy("Y_{t}".format(t=t),
+                                          alpha=intercept + x_coeff * x_pred[t] + x_ar * y_preds[-1],
+                                          beta=sigma, shape=(len(countries),))]
+                else:
+                    y_preds += [pm.Normal("Y_{t}".format(t=t),
+                                          mu=intercept + x_coeff * x_pred[t] + x_ar * y_preds[-1],
+                                          sigma=sigma, shape=(len(countries),))]
         # Inference!
         trace = pm.sample(draws=draws, tune=tune, cores=1, chains=2, target_accept=0.95, progressbar=True)
 
@@ -244,20 +291,22 @@ def bayesian_model(data, data_pred, register_data = True, tune=500, draws=1000, 
             predictions = pm.sample_posterior_predictive(trace, var_names=[r"$\beta_1$", r"$\alpha_0$", r"$\beta_0$",
                                                                        r"$\alpha_1$", r"$\sigma$", "y"] + ["Y_{t}".format(t=t) for t in range(horizon)],
                                                      random_seed=5)
-            az.plot_trace(trace, var_names=[r"$\beta_1$", r"$\alpha_0$", r"$\beta_0$", r"$\alpha_1$", r"$\sigma$"],
+            axes = az.plot_trace(trace, var_names=[r"$\beta_1$", r"$\alpha_0$", r"$\beta_0$", r"$\alpha_1$", r"$\sigma$"],
                           divergences=None, legend=False, circ_var_names=countries)
+            fig = axes.ravel()[0].figure
         else:
             predictions = pm.sample_posterior_predictive(trace,
                                                              var_names=[r"$\alpha_0$", r"$\beta_0$",
                                                                         r"$\alpha_1$", r"$\sigma$", "y"],
                                                              random_seed=5)
-            az.plot_trace(trace, var_names=[r"$\alpha_0$", r"$\beta_0$", r"$\alpha_1$", r"$\sigma$"],
+            axes = az.plot_trace(trace, var_names=[r"$\alpha_0$", r"$\beta_0$", r"$\alpha_1$", r"$\sigma$"],
                           divergences=None, legend=False, circ_var_names=countries)
+            fig = axes.ravel()[0].figure
 
         idata = az.from_pymc3(model=model, posterior_predictive=predictions)
 
     if register_data:
         for country in countries:
-            register(idata, countries.index(country), country, world_exergy=include_world_exergy, tuning=tune, draw=draws, model=model_number)
+            register(idata, countries.index(country), country, world_exergy=include_world_exergy, tuning=tune, draw=draws, param=hyperparams)
 
-    return predictions, countries, idata, y, trace
+    return predictions, countries, idata, y, trace, fig

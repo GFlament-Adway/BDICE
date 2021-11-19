@@ -32,6 +32,11 @@ def get_countries(path="data/iea/tfp_countries.csv"):
                 countries = row
     return countries
 
+def get_params(params_path="data/hyperparams.json"):
+    with open(params_path, "r") as json_file:
+        hyperparams = json.load(json_file)
+    return hyperparams
+
 def countries_energy(exergy_coefs_path = "data/iea/exergy_coefs.json", energy_path="data/iea/IEA_all_countries/countries_energy_balance.csv", country="Belgium", starting_year = 1971, end_year = 2020):
     years = [starting_year + k for k in range(end_year - starting_year)]
     exergy_coef = get_exergy_coefs(exergy_coefs_path)
@@ -211,7 +216,27 @@ def add_emissions(energie, country):
         energie["country"][country][year].update({"emissions": emissions})
     return energie
 
+
+def phi(G):
+    return np.log(G/280)/np.log(2)
+
+def f_n(S):
+    from scipy.stats import norm
+    return norm.pdf(S, 3, 1.447)
+
+
+
 if __name__ == "__main__":
+    step = 0.01
+    T = np.arange(6, 40, step)
+    Gs = [400 + k for k in range(0, 350, 50)]
+
+    for G in Gs:
+        dens = []
+        for t in T:
+            dens += [f_n(t/phi(G))/phi(G)]
+        print(G)
+        print(np.sum([step*(dens[t+1]+dens[t])/2 for t in range(len(dens) - 1)]))
     country = "France"
     energie = countries_energy(exergy_coefs_path
      = "../data/iea/exergy_coefs.json", energy_path="../data/iea/IEA_all_countries/countries_energy_balance.csv", country=country)
@@ -219,6 +244,6 @@ if __name__ == "__main__":
     emissions = [energie["country"][country][year]["emissions"] for year in range(1971, 2019)]
     print(emissions)
     import matplotlib.pyplot as plt
-    plt.figure()
-    plt.plot(emissions)
-    plt.show()
+    #plt.figure()
+    #plt.plot(emissions)
+    #plt.show()
