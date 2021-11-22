@@ -10,19 +10,6 @@ import scipy.stats as stats
 import os
 
 
-def from_posterior(param, samples, k=100):
-    smin, smax = np.min(samples), np.max(samples)
-    width = smax - smin
-    x = np.linspace(smin, smax, k)
-    y = stats.gaussian_kde(samples)(x)
-
-    # what was never sampled should have a small probability but not 0,
-    # so we'll extend the domain and use linear approximation of density on it
-    x = np.concatenate([[x[0] - 3 * width], x, [x[-1] + 3 * width]])
-    y = np.concatenate([[0], y, [0]])
-    return pm.Interpolated(param, x, y)
-
-
 def mse(y_hat, y):
     """
 
@@ -342,5 +329,4 @@ if __name__ == "__main__":
                                                                                           k=0))
             else:
                 os.mkdir("sorties/model_{model_name}".format(model_name=param["model_name"]))
-            plt.clf()
-            plt.cla()
+        plt.close("all")

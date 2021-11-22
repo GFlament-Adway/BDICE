@@ -2,7 +2,7 @@ import csv
 import numpy as np
 import json
 import os
-from scipy.stats import ks_2samp
+from scipy.stats import ks_2samp, norm
 
 def med_regression(x,y, n_deciles=3, alpha=0.5):
     """
@@ -149,6 +149,11 @@ def compute_tfp_level(variations):
 
 
 def get_exergy_iea(path="data/iea/exergy_from_iea_data.csv"):
+    """
+    Used to generate result of section 2
+    :param path:
+    :return:
+    """
     exergy = []
     with open(path, "r") as csv_file:
         data = csv.reader(csv_file)
@@ -199,10 +204,6 @@ def get_tfp(path="../data/tfp_data"):
     return [float(value.replace("\n", "").replace(",", ".").replace('"', '')) for value in data]
 
 
-def kolmogorov_distance(p,q):
-    return ks_2samp(p,q)
-
-
 def add_emissions(energie, country):
 
     years = list(energie["country"][country].keys())
@@ -216,13 +217,18 @@ def add_emissions(energie, country):
         energie["country"][country][year].update({"emissions": emissions})
     return energie
 
+def weitzman(T, G):
+    """
 
-def phi(G):
-    return np.log(G/280)/np.log(2)
+    :param T: Temperature
+    :param G: Green house gas concentration
+    :return: probability to get a high increase than T, according to : Weitzman, GHG targets as insurance against catastrophic climate damages.
+    """
 
-def f_n(S):
-    from scipy.stats import norm
-    return norm.pdf(S, 3, 1.447)
+    phi = np.log(G / 280) / np.log(2)
+    S = T/phi
+    return norm.pdf(S, 3, 1.447)/phi
+
 
 
 
@@ -234,7 +240,7 @@ if __name__ == "__main__":
     for G in Gs:
         dens = []
         for t in T:
-            dens += [f_n(t/phi(G))/phi(G)]
+            dens += [weitzman(t,G)]
         print(G)
         print(np.sum([step*(dens[t+1]+dens[t])/2 for t in range(len(dens) - 1)]))
     country = "France"
