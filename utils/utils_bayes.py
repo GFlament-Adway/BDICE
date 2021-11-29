@@ -25,24 +25,25 @@ def generate_scenario(scenario, countries, horizon):
 
     return data_pred
 
+def load_predictions(model, parent_dir = ""):
+    countries = os.listdir(parent_dir + "sorties/{model}/posterior_data".format(model=model))
+    preds = {country : [] for country in countries}
+    for country in countries:
+        list_estimations = os.listdir(parent_dir + "sorties/{model}/posterior_data/{country}".format(model=model, country=country))
+        with open(parent_dir + "sorties/{model}/posterior_data/{country}/".format(model=model, country=country) + list_estimations[-1], "r") as csv_file:
+            rows = csv.reader(csv_file)
+            for i, row in enumerate(rows):
+                if i == 0:
+                    var_names = row
+                    list_indices = ["Y_" in var for var in var_names]
+                else:
+                    preds[country] += [[row[k] for k,b in enumerate(list_indices) if b]]
+    return preds
+
 
 
 def predict(idata, traj_e, delta_a=-0.02, horizon=30, sample_size=1000, include_world_exergye=False):
     predictions = []
-
-
-    predictions += [[np.random.normal(
-        loc=np.sum(
-            [float(coefs["alpha_0"][sample_alpha_0[j]]) * float(coefs["alpha_1"][sample_alpha_1[j]]) ** i for i in
-             range(t)]) +
-            float(coefs["alpha_1"][sample_alpha_1[j]]) ** t * delta_a +
-            np.sum([float(coefs["beta_0"][sample_beta_0[j]]) * traj_e[i] * float(
-                coefs["alpha_1"][sample_alpha_1[j]]) ** (i) for i in range(t)]),
-        scale=np.sum(
-            [float(coefs["alpha_1"][sample_alpha_1[j]]) ** (2 * i) * np.mean([float(s) for s in coefs["sigma"]]) for i
-             in range(t)]))
-        for t in range(1, horizon + 1)] for j in range(sample_size)]
-
     return predictions
 
 def pred_posterior(idata, country_id, delta_a, delta_e, delta_e_w, world_exergy=True):
@@ -66,7 +67,7 @@ def pred_posterior(idata, country_id, delta_a, delta_e, delta_e_w, world_exergy=
     #equivalent of np.add : np.array([1,2,3]) + np.array([1,2,3]) = array([2,4,6])
     return post
 
-def register(idata, country_id, country_name, tuning, draw, param, world_exergy=True):
+def register(idata, country_id, country_name, tuning, draw, param, world_exergy=True, horizon = 29):
     """
     Register data. Should not be used alone.
     :param idata:
@@ -86,12 +87,17 @@ def register(idata, country_id, country_name, tuning, draw, param, world_exergy=
                   range(len(idata["posterior_predictive"][r"$\alpha_0$"][0]))]
     sigma = [idata["posterior_predictive"][r"$\sigma$"][0][t][country_id] for t in
              range(len(idata["posterior_predictive"][r"$\alpha_0$"][0]))]
+
+    posterior_Y = []
+    for h in range(horizon):
+        posterior_Y += [[idata["posterior_predictive"]["Y_{h}".format(h=h)][0][t][country_id] for t in
+              range(len(idata["posterior_predictive"][r"$\alpha_0$"][0]))]]
     if world_exergy:
-        names = ["alpha_0", "alpha_1", "beta_0", "beta_1", r"$\sigma$"]
-        rows = np.array([alpha_0, alpha_1, beta_0, beta_1, sigma]).T
+        names = ["alpha_0", "alpha_1", "beta_0", "beta_1", r"$\sigma$"] + ["Y_{h}".format(h=h) for h in range(horizon)]
+        rows = np.array([alpha_0, alpha_1, beta_0, beta_1, sigma] + [posterior_Y[h] for h in range(horizon)]).T
     else:
-        names = ["alpha_0", "alpha_1", "beta_0", r"$\sigma$"]
-        rows = np.array([alpha_0, alpha_1, beta_0, sigma]).T
+        names = ["alpha_0", "alpha_1", "beta_0", r"$\sigma$"] + ["Y_{h}".format(h=h) for h in range(horizon)]
+        rows = np.array([alpha_0, alpha_1, beta_0, sigma] + [posterior_Y[h] for h in range(horizon)]).T
 
 
     if os.path.exists("sorties/model_{model_number}/posterior_data/{country}".format(model_number=param["model_name"], country=country_name)):
@@ -297,7 +303,7 @@ def bayesian_model(data, data_pred, register_data = True, tune=500, draws=1000, 
         else:
             predictions = pm.sample_posterior_predictive(trace,
                                                              var_names=[r"$\alpha_0$", r"$\beta_0$",
-                                                                        r"$\alpha_1$", r"$\sigma$", "y"],
+                                                                        r"$\alpha_1$", r"$\sigma$", "y"] + ["Y_{t}".format(t=t) for t in range(horizon)],
                                                              random_seed=5)
             axes = az.plot_trace(trace, var_names=[r"$\alpha_0$", r"$\beta_0$", r"$\alpha_1$", r"$\sigma$"],
                           divergences=None, legend=False, circ_var_names=countries)
@@ -310,3 +316,4 @@ def bayesian_model(data, data_pred, register_data = True, tune=500, draws=1000, 
             register(idata, countries.index(country), country, world_exergy=include_world_exergy, tuning=tune, draw=draws, param=hyperparams)
 
     return predictions, countries, idata, y, trace, fig
+

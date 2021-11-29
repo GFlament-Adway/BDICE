@@ -3,6 +3,8 @@ import numpy as np
 import json
 import os
 from scipy.stats import ks_2samp, norm
+from scipy.optimize import newton
+
 
 def med_regression(x,y, n_deciles=3, alpha=0.5):
     """
@@ -230,19 +232,56 @@ def weitzman(T, G):
     return norm.pdf(S, 3, 1.447)/phi
 
 
+def newton_raphson(x_0, f, f_prime, max_iter, args=()):
+    sol = x_0
+    for _ in range(max_iter):
+        sol = sol - f(sol, args[0])/f_prime(sol)
+    return sol
 
+def inv_damage(threshold = 0.1, type="nordhaus"):
+    """
+
+    :param T: Temperature increase since industrial revolution.
+    :param threshold: Damage probability threshold.
+    :return: Damage as output
+    """
+
+    if type.lower() == "nordhaus":
+        return np.sqrt((1/0.0026) * (1-threshold)/threshold)
+
+    if type.lower() == "weitzman":
+        f = lambda T, threshold :  0.0023888492339916045*T**2 + 0.00015625000000000003*T**7 + 1 - 1/threshold
+        f_prime = lambda T : 2*0.0023888492339916045*T + 7*0.00015625000000000003*T**6
+        all_sols = [newton_raphson(x, f, f_prime, max_iter=20000, args = (threshold, )) for x in np.arange(0.4, 10, 0.3)]
+        print(all_sols)
+        print([np.min([np.abs(f(sol, threshold)) for sol in all_sols])])
+        return all_sols[np.argmin([np.abs(f(sol, threshold)) for sol in all_sols])]
 
 if __name__ == "__main__":
+    print("Temperature increase")
     step = 0.01
-    T = np.arange(6, 40, step)
+    T = np.arange(2, 40, step)
     Gs = [400 + k for k in range(0, 350, 50)]
 
     for G in Gs:
         dens = []
+        damage_prob = []
         for t in T:
             dens += [weitzman(t,G)]
-        print(G)
         print(np.sum([step*(dens[t+1]+dens[t])/2 for t in range(len(dens) - 1)]))
+    print("Damage : ")
+
+    threshold = 1 - 0.01
+    inv_d = inv_damage(threshold, type="weitzman")
+    print("threshold : ", inv_d)
+    T = np.arange(inv_d, 40,  step)
+    Gs = [400 + k for k in range(0, 350, 50)]
+    for G in Gs:
+        damage_prob = []
+        for t in T:
+            damage_prob += [weitzman(t, G)]
+        print(np.sum([step * (damage_prob[t + 1] + damage_prob[t]) / 2 for t in range(len(damage_prob) - 1)]))
+
     country = "France"
     energie = countries_energy(exergy_coefs_path
      = "../data/iea/exergy_coefs.json", energy_path="../data/iea/IEA_all_countries/countries_energy_balance.csv", country=country)

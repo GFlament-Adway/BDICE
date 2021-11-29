@@ -2,7 +2,7 @@ import pymc3 as pm
 import arviz as az
 import numpy as np
 from utils.utils import med_regression, get_params
-from utils.utils_bayes import bayesian_model, get_data, predict, generate_scenario
+from utils.utils_bayes import bayesian_model, get_data, predict, generate_scenario, load_predictions
 import matplotlib.pyplot as plt
 import matplotlib
 from DICE.pydice import DICE
@@ -117,90 +117,58 @@ def visu(predictions, countries, idata, y, alpha, param):
             fig.savefig("sorties/model_{model_name}/fit_plot/fit_plot.png".format(model_name=param["model_name"]))
 
 
-def show_predictions():
+def show_predictions(model="model_3", alpha=0.05):
     """
 
     Shows DICE model with different TFP paths.
 
     :return:
     """
-    preds = np.array(predict([np.log(1 - 0.04) for _ in range(horizon)], country="United States", sample_size=500,
-                             horizon=horizon, delta_a=0)).T
+    all_preds = load_predictions(model)
+    countries = os.listdir('sorties/model_1/posterior_data')
 
-    preds_g = np.array(predict([np.log(1 + 0.04) for _ in range(horizon)], country="United States", sample_size=500,
-                               horizon=horizon, delta_a=0)).T
 
-    q_5 = [np.sort(preds[t])[int(len(preds[t]) * alpha)] for t in range(horizon)]
-    q_95 = [np.sort(preds[t])[int(len(preds[t]) * (1 - alpha))] for t in range(horizon)]
+    for country in countries:
+            preds = np.array(all_preds[country]).astype(np.float)  #Stored as string
+            horizon = len(preds)
+            assert [len(preds[t]) == len(preds[0]) for t in range(horizon)] #Verification that all predictions are of same lengths
 
-    plt.figure()
-    plt.plot(preds, color="blue", alpha=0.01)
-    plt.plot(q_5, color="red", alpha=0.5, linestyle=":", label="Quantiles of the predictions")
-    plt.plot(q_95, color="red", alpha=0.5)
-    plt.plot([np.median(preds[t]) for t in range(len(preds))], color="red", label="Median values of the predictions")
-    plt.xlabel("Years of forecast")
-    plt.ylabel("log variations of the TFP")
-    plt.legend(loc="upper right")
-    plt.draw()
 
-    q_g_5 = [np.sort(preds_g[t])[int(len(preds[t]) * alpha)] for t in range(horizon)]
-    q_g_95 = [np.sort(preds_g[t])[int(len(preds[t]) * (1 - alpha))] for t in range(horizon)]
+            dices = [DICE(tfp=preds[k]) for k in range(len(preds))]
+            dice = DICE()
+            for _ in range(len(preds[0])):
+                for k in range(len(preds)):
+                    dices[k].step()
+                #dice.step()
 
-    plt.figure()
-    plt.plot(preds_g, color="blue", alpha=0.01)
-    plt.plot(q_g_5, color="red", alpha=0.5, linestyle=":", label="Quantiles of the predictions")
-    plt.plot(q_g_95, color="red", alpha=0.5)
-    plt.plot([np.median(preds_g[t]) for t in range(len(preds))], color="red", label="Median values of the predictions")
-    plt.xlabel("Years of forecast")
-    plt.ylabel("log variations of the TFP")
-    plt.legend(loc="upper right")
-    plt.draw()
 
-    dice_q_5 = DICE(tfp=q_5)
-    dice_q_95 = DICE(tfp=q_95)
-    dice_med = DICE(tfp=[np.median(preds[t]) for t in range(horizon)])
-    dice_med_growth = DICE(tfp=[np.median(preds_g[t]) for t in range(horizon)])
-    dice_med_growth_q_5 = DICE(tfp=[np.sort(preds_g[t])[int(alpha * len(preds_g[t]))] for t in range(horizon)])
-    dice_med_growth_q_95 = DICE(tfp=[np.sort(preds_g[t])[int((1 - alpha) * len(preds_g[t]))] for t in range(horizon)])
-    dice = DICE()
-    for _ in range(len(q_5)):
-        dice_q_5.step()
-        dice_q_95.step()
-        dice_med.step()
-        dice_med_growth.step()
-        dice.step()
-        dice_med_growth_q_5.step()
-        dice_med_growth_q_95.step()
-
-    plt.figure()
-    plt.title("TFP variations")
-    plt.plot(dice.parameters["tfp"], color="blue", label="Nordhaus assumptions")
-    plt.plot(dice_med_growth.parameters["tfp"], color="red", alpha=1, label="Median TFP value with exergy growth")
-    plt.plot(dice_med_growth_q_95.parameters["tfp"], color="red", alpha=0.5, linestyle=":",
-             label="Quantile with exergy growth")
-    plt.plot(dice_med_growth_q_5.parameters["tfp"], color="red", alpha=0.5, linestyle=":")
-    plt.plot(dice_q_5.parameters["tfp"], color="green", alpha=0.5, linestyle=":", label="Quantile with exergy decline")
-    plt.plot(dice_q_95.parameters["tfp"], color="green", alpha=0.5, linestyle=":")
-    plt.plot(dice_med.parameters["tfp"], color="green", alpha=1, label="Median TFP value with exergy decline")
-    plt.xlabel("Years of prediction")
-    plt.legend()
-    plt.draw()
-
-    plt.figure()
-    plt.title("Economic output")
-    plt.plot(dice.parameters["output"], color="blue", label="Nordhaus assumptions")
-    plt.plot(dice_med_growth.parameters["output"], color="red", alpha=1, label="Output with exergy growth")
-    plt.plot(dice_med_growth_q_95.parameters["output"], color="red", alpha=0.5, linestyle=":",
-             label="Quantile with exergy growth")
-    plt.plot(dice_med_growth_q_5.parameters["output"], color="red", alpha=0.5, linestyle=":")
-    plt.plot(dice_q_5.parameters["output"], color="green", alpha=0.5, linestyle=":",
-             label="Quantile with exergy decline")
-    plt.plot(dice_q_95.parameters["output"], color="green", alpha=0.5, linestyle=":")
-    plt.plot(dice_med.parameters["output"], color="green", alpha=1, label="Median output value with exergy decline")
-    plt.xlabel("Years of prediction")
-    plt.ylabel("Trillions of $2010")
-    plt.legend()
-    plt.draw()
+            fig = plt.figure()
+            plt.title("Economic output with {country} TFP".format(country=country))
+            #plt.plot(dice.parameters["output"], color="red", label="Nordhaus assumptions")
+            for k in range(len(preds)):
+                if k == 0:
+                    plt.plot(dices[k].parameters["output"], color="blue", alpha=0.01, label="Simulated output, Nordhaus damage function")
+                else:
+                    plt.plot(dices[k].parameters["output"], color="blue", alpha=0.01)
+            plt.xticks([k for k in range(len(preds[0]))], [str(2021 + k) for k in range(len(preds[0]))], rotation=45)
+            plt.xlabel("Years of prediction")
+            plt.ylabel("Trillions of $2010")
+            plt.legend(loc="best"                                                                                                                                                                                                                       )
+            plt.draw()
+            if os.path.exists("sorties/{model_name}/predictions".format(model_name=model)):
+                k = len(os.listdir("sorties/{model_name}/predictions".format(model_name=model)))
+                fig.savefig(
+                    "sorties/{model_name}/predictions/predictions_{country}.png".format(model_name=model, country=country))
+            else:
+                if os.path.exists("sorties/{model_name}".format(model_name=model)):
+                    os.mkdir("sorties/{model_name}/predictions".format(model_name=model))
+                    fig.savefig(
+                        "sorties/{model_name}/predictions/predictions_{country}.png".format(model_name=model, country=country))
+                else:
+                    os.mkdir("sorties/{model_name}".format(model_name=model))
+                    os.mkdir("sorties/{model_name}/predictions".format(model_name=model))
+                    fig.savefig(
+                        "sorties/{model_name}/fit_plot/predictions_{country}.png".format(model_name=model, country=country))
 
 def plot_emissions(data, param, countries = ["United States", "Japan", "Italy", "Germany", "United Kingdom", "France", "Canada"]):
     """
@@ -248,11 +216,9 @@ def plot_emissions(data, param, countries = ["United States", "Japan", "Italy", 
 if __name__ == "__main__":
     print(pm.__version__)
     print(az.__version__)
-    font = {'weight': 'bold',
-            'size': 20}
 
-    matplotlib.rc('font', **font)
-
+    show_predictions(model="model_3")
+    show_predictions(model="model_4")
     params = get_params()
     horizon = 29
     alpha = 0.1
@@ -301,6 +267,7 @@ if __name__ == "__main__":
                 axs[coords[countries.index(country)][0], coords[countries.index(country)][1]].grid()
                 axs[coords[countries.index(country)][0], coords[countries.index(country)][1]].set_ylim(-0.038, 0.038)
                 axs[coords[countries.index(country)][0], coords[countries.index(country)][1]].set_axis_on()
+                axs[coords[countries.index(country)][0], coords[countries.index(country)][1]].set_xticks([year for year in range(0, 30, 5)], [2020 + year for year in range(0, 30, 5)])
                 axs[coords[countries.index(country)][0], coords[countries.index(country)][1]].set_title(country)
                 lower = [np.sort([trace["Y_{t}".format(t=t)][k][countries.index(country)] for k in range(draws)])[
                              int(alpha * draws)] for t in
