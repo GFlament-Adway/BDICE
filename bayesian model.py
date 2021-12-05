@@ -2,7 +2,7 @@ import pymc3 as pm
 import arviz as az
 import numpy as np
 from utils.utils import med_regression, get_params
-from utils.utils_bayes import bayesian_model, get_data, predict, generate_scenario, load_predictions
+from utils.utils_bayes import bayesian_model, get_data, predict, generate_scenario, load_predictions, load_posterior
 import matplotlib.pyplot as plt
 import matplotlib
 from DICE.pydice import DICE
@@ -73,7 +73,7 @@ def visu(predictions, countries, idata, y, alpha, param):
     :return: None
     """
 
-    #az.plot_ppc(idata)
+    # az.plot_ppc(idata)
     mu_p = predictions["y"]
     lower = [np.sort(mu_p.T[k])[int(len(mu_p.T[k]) * alpha)] for k in range(len(mu_p[0]))]
     upper = [np.sort(mu_p.T[k])[int(len(mu_p.T[k]) * (1 - alpha))] for k in range(len(mu_p[0]))]
@@ -117,7 +117,39 @@ def visu(predictions, countries, idata, y, alpha, param):
             fig.savefig("sorties/model_{model_name}/fit_plot/fit_plot.png".format(model_name=param["model_name"]))
 
 
-def show_predictions(model="model_3", alpha=0.05):
+def get_posterior(delta_a, delta_e, model="model_3", delta_ew = None, plot=False):
+    """
+
+    :param model: Model name
+    :return:
+    """
+
+    all_preds = load_posterior(model)
+
+    countries = os.listdir('sorties/model_1/posterior_data')
+    posterior_pres = {country: [] for country in countries}
+    returned_post = {country: 0 for country in countries}
+    for i, country in enumerate(countries):
+        n_draws = len(all_preds[country])
+        print("############   {country}   ##################".format(country=country))
+        for k in range(n_draws):
+            if delta_ew is not None:
+                posterior_pres[country] += [
+                    all_preds[country][k]["alpha_0"] + all_preds[country][k]["alpha_1"] * delta_a[country] +
+                    all_preds[country][k]["beta_0"] * delta_e[country] + all_preds[country][k]["beta_1"] * delta_ew]
+            else:
+                posterior_pres[country] += [
+                    all_preds[country][k]["alpha_0"] + all_preds[country][k]["alpha_1"] * delta_a[country] +
+                    all_preds[country][k]["beta_0"] * delta_e[country]]
+        if plot:
+            print("Median : ", np.sort(posterior_pres[country])[int(0.5 * n_draws)])
+            print("0.1 credibility interval : ", np.sort(posterior_pres[country])[int(0.1 * n_draws)])
+            print("0.9 credibility interval : ", np.sort(posterior_pres[country])[int(0.9 * n_draws)])
+            returned_post[country] = np.sort(posterior_pres[country])[int(0.5 * n_draws)]
+    return returned_post
+
+
+def show_predictions(model="model_3"):
     """
 
     Shows DICE model with different TFP paths.
@@ -127,50 +159,52 @@ def show_predictions(model="model_3", alpha=0.05):
     all_preds = load_predictions(model)
     countries = os.listdir('sorties/model_1/posterior_data')
 
-
     for country in countries:
-            preds = np.array(all_preds[country]).astype(np.float)  #Stored as string
-            horizon = len(preds)
-            assert [len(preds[t]) == len(preds[0]) for t in range(horizon)] #Verification that all predictions are of same lengths
+        preds = np.array(all_preds[country]).astype(np.float)  # Stored as string
+        horizon = len(preds)
+        assert [len(preds[t]) == len(preds[0]) for t in
+                range(horizon)]  # Verification that all predictions are of same lengths
 
-
-            dices = [DICE(tfp=preds[k]) for k in range(len(preds))]
-            dice = DICE()
-            for _ in range(len(preds[0])):
-                for k in range(len(preds)):
-                    dices[k].step()
-                #dice.step()
-
-
-            fig = plt.figure()
-            plt.title("Economic output with {country} TFP".format(country=country))
-            #plt.plot(dice.parameters["output"], color="red", label="Nordhaus assumptions")
+        dices = [DICE(tfp=preds[k]) for k in range(len(preds))]
+        dice = DICE()
+        for _ in range(len(preds[0])):
             for k in range(len(preds)):
-                if k == 0:
-                    plt.plot(dices[k].parameters["output"], color="blue", alpha=0.01, label="Simulated output, Nordhaus damage function")
-                else:
-                    plt.plot(dices[k].parameters["output"], color="blue", alpha=0.01)
-            plt.xticks([k for k in range(len(preds[0]))], [str(2021 + k) for k in range(len(preds[0]))], rotation=45)
-            plt.xlabel("Years of prediction")
-            plt.ylabel("Trillions of $2010")
-            plt.legend(loc="best"                                                                                                                                                                                                                       )
-            plt.draw()
-            if os.path.exists("sorties/{model_name}/predictions".format(model_name=model)):
-                k = len(os.listdir("sorties/{model_name}/predictions".format(model_name=model)))
-                fig.savefig(
-                    "sorties/{model_name}/predictions/predictions_{country}.png".format(model_name=model, country=country))
-            else:
-                if os.path.exists("sorties/{model_name}".format(model_name=model)):
-                    os.mkdir("sorties/{model_name}/predictions".format(model_name=model))
-                    fig.savefig(
-                        "sorties/{model_name}/predictions/predictions_{country}.png".format(model_name=model, country=country))
-                else:
-                    os.mkdir("sorties/{model_name}".format(model_name=model))
-                    os.mkdir("sorties/{model_name}/predictions".format(model_name=model))
-                    fig.savefig(
-                        "sorties/{model_name}/fit_plot/predictions_{country}.png".format(model_name=model, country=country))
+                dices[k].step()
+            # dice.step()
 
-def plot_emissions(data, param, countries = ["United States", "Japan", "Italy", "Germany", "United Kingdom", "France", "Canada"]):
+        fig = plt.figure()
+        plt.title("Economic output with {country} TFP".format(country=country))
+        # plt.plot(dice.parameters["output"], color="red", label="Nordhaus assumptions")
+        for k in range(len(preds)):
+            if k == 0:
+                plt.plot(dices[k].parameters["output"], color="blue", alpha=0.01,
+                         label="Simulated output, Nordhaus damage function")
+            else:
+                plt.plot(dices[k].parameters["output"], color="blue", alpha=0.01)
+        plt.xticks([k for k in range(len(preds[0]))], [str(2021 + k) for k in range(len(preds[0]))], rotation=45)
+        plt.xlabel("Years of prediction")
+        plt.ylabel("Trillions of $2010")
+        plt.legend(loc="best")
+        plt.draw()
+        if os.path.exists("sorties/{model_name}/predictions".format(model_name=model)):
+            k = len(os.listdir("sorties/{model_name}/predictions".format(model_name=model)))
+            fig.savefig(
+                "sorties/{model_name}/predictions/predictions_{country}.png".format(model_name=model, country=country))
+        else:
+            if os.path.exists("sorties/{model_name}".format(model_name=model)):
+                os.mkdir("sorties/{model_name}/predictions".format(model_name=model))
+                fig.savefig(
+                    "sorties/{model_name}/predictions/predictions_{country}.png".format(model_name=model,
+                                                                                        country=country))
+            else:
+                os.mkdir("sorties/{model_name}".format(model_name=model))
+                os.mkdir("sorties/{model_name}/predictions".format(model_name=model))
+                fig.savefig(
+                    "sorties/{model_name}/fit_plot/predictions_{country}.png".format(model_name=model, country=country))
+
+
+def plot_emissions(data, param,
+                   countries=["United States", "Japan", "Italy", "Germany", "United Kingdom", "France", "Canada"]):
     """
 
     :param data:
@@ -192,9 +226,9 @@ def plot_emissions(data, param, countries = ["United States", "Japan", "Italy", 
         axes[k].grid()
         axes[k].set_ylabel(countries[k])
         if k == 0:
-            axes[k].plot([data[k][t]/data[k][0] for t in range(data_length)], label="Emissions", alpha=0.6)
+            axes[k].plot([data[k][t] / data[k][0] for t in range(data_length)], label="Emissions", alpha=0.6)
         else:
-            axes[k].plot([data[k][t]/data[k][0] for t in range(data_length)], alpha=0.6)
+            axes[k].plot([data[k][t] / data[k][0] for t in range(data_length)], alpha=0.6)
         axes[k].set_ylim(0, 1)
 
     # ax.vlines([(k) * 46 for k in range(len(countries) + 1)], ymin=min(y), ymax=max(y), color="red")
@@ -203,20 +237,32 @@ def plot_emissions(data, param, countries = ["United States", "Japan", "Italy", 
     fig.legend(lines, labels, loc="lower center")
     if os.path.exists("sorties/model_{model_name}/emissions_plot".format(model_name=param["model_name"])):
         k = len(os.listdir("sorties/model_{model_name}/emissions_plot".format(model_name=param["model_name"])))
-        fig.savefig("sorties/model_{model_name}/emissions_plot/plot_{k}.png".format(model_name=param["model_name"], k=k))
+        fig.savefig(
+            "sorties/model_{model_name}/emissions_plot/plot_{k}.png".format(model_name=param["model_name"], k=k))
     else:
         if os.path.exists("sorties/model_{model_name}".format(model_name=param["model_name"])):
             os.mkdir("sorties/model_{model_name}/emissions_plot".format(model_name=param["model_name"]))
-            fig.savefig("sorties/model_{model_name}/emissions_plot/emissions_plot.png".format(model_name=param["model_name"]))
+            fig.savefig(
+                "sorties/model_{model_name}/emissions_plot/emissions_plot.png".format(model_name=param["model_name"]))
         else:
             os.mkdir("sorties/model_{model_name}".format(model_name=param["model_name"]))
             os.mkdir("sorties/model_{model_name}/emissions_plot".format(model_name=param["model_name"]))
-            fig.savefig("sorties/model_{model_name}/emissions_plot/emissions_plot.png".format(model_name=param["model_name"]))
+            fig.savefig(
+                "sorties/model_{model_name}/emissions_plot/emissions_plot.png".format(model_name=param["model_name"]))
+
 
 if __name__ == "__main__":
     print(pm.__version__)
     print(az.__version__)
 
+    delta_a = {"France": 0, "United States": 0, "Japan": 0, "Germany": 0, "United Kingdom": 0, "Italy": 0, "Canada": 0}
+    delta_e = {"France": -0.143, "United States": -0.109, "Japan": -0.065, "Germany": -0.097, "United Kingdom": -0.112,
+               "Italy": -0.107, "Canada": -0.096}
+    delta_a = get_posterior(delta_a=delta_a, delta_e=delta_e, model="model_7", delta_ew=-0.1, plot=False)
+    # delta_e hyp 2021:
+    delta_e = {"France": 0.07, "United States": 0.07, "Japan": 0.07, "Germany": 0.07, "United Kingdom": 0.07,
+               "Italy": 0.07, "Canada": 0.07}
+    get_posterior(delta_a=delta_a, delta_e=delta_e, model="model_3", plot=True)
     show_predictions(model="model_3")
     show_predictions(model="model_4")
     params = get_params()
@@ -224,7 +270,9 @@ if __name__ == "__main__":
     alpha = 0.1
     for param in params:
         if param["compute"]:
-            assert np.all(np.array([key in list(param.keys()) for key in ["mu_beta_1", "sigma_mu_beta_1", "sigma_beta_1"]]) == param["include beta 1"])
+            assert np.all(
+                np.array([key in list(param.keys()) for key in ["mu_beta_1", "sigma_mu_beta_1", "sigma_beta_1"]]) ==
+                param["include beta 1"])
             # Tune : Number of steps to reach
             tune = param["tuning steps"]
             # Number of draws from the posterior density
@@ -233,7 +281,7 @@ if __name__ == "__main__":
             # Parameters
             include_world_exergy = bool(param["include beta 1"])
             # Scenario to be used
-            scenario = "scenario_2.json"
+            scenario = "scenario_1.json"
             # Countries to be considered
             countries = ["United States", "Japan", "Italy", "Germany", "United Kingdom", "France", "Canada"]
 
@@ -267,7 +315,6 @@ if __name__ == "__main__":
                 axs[coords[countries.index(country)][0], coords[countries.index(country)][1]].grid()
                 axs[coords[countries.index(country)][0], coords[countries.index(country)][1]].set_ylim(-0.038, 0.038)
                 axs[coords[countries.index(country)][0], coords[countries.index(country)][1]].set_axis_on()
-                axs[coords[countries.index(country)][0], coords[countries.index(country)][1]].set_xticks([year for year in range(0, 30, 5)], [2020 + year for year in range(0, 30, 5)])
                 axs[coords[countries.index(country)][0], coords[countries.index(country)][1]].set_title(country)
                 lower = [np.sort([trace["Y_{t}".format(t=t)][k][countries.index(country)] for k in range(draws)])[
                              int(alpha * draws)] for t in
@@ -287,13 +334,15 @@ if __name__ == "__main__":
                 if os.path.exists("sorties/model_{model_name}/predictions".format(model_name=param["model_name"])):
                     k = len(os.listdir("sorties/model_{model_name}/predictions".format(model_name=param["model_name"])))
                     fig.savefig(
-                        "sorties/model_{model_name}/predictions/countries_{k}.png".format(model_name=param["model_name"],
-                                                                                          k=k))
+                        "sorties/model_{model_name}/predictions/countries_{k}.png".format(
+                            model_name=param["model_name"],
+                            k=k))
                 else:
                     os.mkdir("sorties/model_{model_name}/predictions".format(model_name=param["model_name"]))
                     fig.savefig(
-                        "sorties/model_{model_name}/predictions/countries_{k}.png".format(model_name=param["model_name"],
-                                                                                          k=0))
+                        "sorties/model_{model_name}/predictions/countries_{k}.png".format(
+                            model_name=param["model_name"],
+                            k=0))
             else:
                 os.mkdir("sorties/model_{model_name}".format(model_name=param["model_name"]))
         plt.close("all")

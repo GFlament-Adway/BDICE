@@ -41,6 +41,21 @@ def load_predictions(model, parent_dir = ""):
     return preds
 
 
+def load_posterior(model, parent_dir = ""):
+    countries = os.listdir(parent_dir + "sorties/{model}/posterior_data".format(model=model))
+    preds = {country : [] for country in countries}
+    for country in countries:
+        list_estimations = os.listdir(parent_dir + "sorties/{model}/posterior_data/{country}".format(model=model, country=country))
+        with open(parent_dir + "sorties/{model}/posterior_data/{country}/".format(model=model, country=country) + list_estimations[-1], "r") as csv_file:
+            rows = csv.reader(csv_file)
+            for i, row in enumerate(rows):
+                if i == 0:
+                    var_names = row
+                    list_indices = ["Y_" not in var for var in var_names]
+                else:
+                    preds[country] += [{var_names[k] : np.float(row[k]) for k,b in enumerate(list_indices) if b}]
+    return preds
+
 
 def predict(idata, traj_e, delta_a=-0.02, horizon=30, sample_size=1000, include_world_exergye=False):
     predictions = []
@@ -193,6 +208,9 @@ def get_data(countries = None):
     data = {}
     data["countries"], data["country_id"], data["x"], data["x_exergy"], data["x_us"], data["y"] = countries, country_id, x, x_exergy, x_us, y
     return data
+
+
+
 
 def bayesian_model(data, data_pred, register_data = True, tune=500, draws=1000, include_world_exergy = False, horizon=30, hyperparams=1):
     """
