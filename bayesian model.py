@@ -1,8 +1,8 @@
 import pymc3 as pm
 import arviz as az
 import numpy as np
-from utils.utils import med_regression, get_params
-from utils.utils_bayes import bayesian_model, get_data, predict, generate_scenario, load_predictions, load_posterior
+from utils.utils import med_regression, get_params, get_pydice_parameters
+from utils.utils_bayes import bayesian_model, get_data, generate_scenario, load_predictions, load_posterior
 import matplotlib.pyplot as plt
 import matplotlib
 from DICE.pydice import DICE
@@ -159,33 +159,44 @@ def show_predictions(model="model_3"):
     all_preds = load_predictions(model)
     countries = os.listdir('sorties/model_1/posterior_data')
 
-    for country in countries:
+    for country in ["United States"]:
         preds = np.array(all_preds[country]).astype(np.float)  # Stored as string
         horizon = len(preds)
         assert [len(preds[t]) == len(preds[0]) for t in
                 range(horizon)]  # Verification that all predictions are of same lengths
+        nordhaus_params = [get_pydice_parameters("DICE/parameters_nordhaus.json") for _ in range(len(preds))]
+        weitzman_params = [get_pydice_parameters("DICE/parameters_weitzman.json") for _ in range(len(preds))]
+        n_preds = len(preds)//10
+        dices_nord = [DICE(parameters = nordhaus_params[k], tfp=preds[k]) for k in range(n_preds)]
+        dices_weitz = [DICE(parameters = weitzman_params[k], tfp=preds[k]) for k in range(n_preds)]
 
-        dices = [DICE(tfp=preds[k]) for k in range(len(preds))]
-        dice = DICE()
-        for _ in range(len(preds[0])):
-            for k in range(len(preds)):
-                dices[k].step()
-            # dice.step()
+        for i in range(len(preds[0])):
+            print("year : ", i)
+            for k in range(n_preds):
+                dices_nord[k].step()
+                dices_weitz[k].step()
 
         fig = plt.figure()
         plt.title("Economic output with {country} TFP".format(country=country))
+        median_nord = [np.sort([dices_nord[k].parameters["output"][t] for k in range(len(dices_nord))])[n_preds//2] for t in range(len(preds[0]))]
+        median_weitzman = [np.sort([dices_weitz[k].parameters["output"][t] for k in range(len(dices_nord))])[n_preds // 2]
+                       for t in range(len(preds[0]))]
+
         # plt.plot(dice.parameters["output"], color="red", label="Nordhaus assumptions")
-        for k in range(len(preds)):
+        for k in range(n_preds):
             if k == 0:
-                plt.plot(dices[k].parameters["output"], color="blue", alpha=0.01,
-                         label="Simulated output, Nordhaus damage function")
+                plt.plot(median_nord, color="blue", alpha=1,
+                         label="Median simulated output, Nordhaus damage function")
+                plt.plot(median_weitzman, color="red", alpha=1,
+                         label="Median simulated output, Weitzman damage function")
             else:
-                plt.plot(dices[k].parameters["output"], color="blue", alpha=0.01)
-        plt.xticks([k for k in range(len(preds[0]))], [str(2021 + k) for k in range(len(preds[0]))], rotation=45)
-        plt.xlabel("Years of prediction")
+                plt.plot(dices_nord[k].parameters["output"], color="blue", alpha=0.01)
+                plt.plot(dices_weitz[k].parameters["output"], color="red", alpha=0.01)
+        plt.xticks([k for k in range(len(preds[0]))], [str(2011 + k) for k in range(len(preds[0]))], rotation=45)
+        plt.ylim(60, 150)
         plt.ylabel("Trillions of $2010")
         plt.legend(loc="best")
-        plt.draw()
+        print("Saving figures")
         if os.path.exists("sorties/{model_name}/predictions".format(model_name=model)):
             k = len(os.listdir("sorties/{model_name}/predictions".format(model_name=model)))
             fig.savefig(
@@ -222,6 +233,7 @@ def plot_emissions(data, param,
     print("#########")
     fig, axes = plt.subplots(nrows=len(countries), sharex=True, figsize=(20, 20))
     plt.xticks([year for year in range(0, data_length, 5)], [2020 + year for year in range(0, data_length, 5)])
+
     for k in range(len(countries)):
         axes[k].grid()
         axes[k].set_ylabel(countries[k])
@@ -263,7 +275,9 @@ if __name__ == "__main__":
     delta_e = {"France": 0.07, "United States": 0.07, "Japan": 0.07, "Germany": 0.07, "United Kingdom": 0.07,
                "Italy": 0.07, "Canada": 0.07}
     get_posterior(delta_a=delta_a, delta_e=delta_e, model="model_3", plot=True)
+    print("Computing DICE")
     show_predictions(model="model_3")
+    print("Computing DICE with world exergy")
     show_predictions(model="model_4")
     params = get_params()
     horizon = 29

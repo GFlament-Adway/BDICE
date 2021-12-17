@@ -163,6 +163,21 @@ def get_exergy_iea(path="data/iea/exergy_from_iea_data.csv"):
             exergy += [float(row[0])]
     return exergy
 
+def get_pydice_parameters(path="DICE/parameters.json"):
+    """
+    Load parameters for the DICE model
+
+    :param path:
+    :return:
+    """
+    parameters = []
+    with open(path, "r") as json_file:
+        parameters = json.load(json_file)
+    sources = parameters["primary energy emission factor"].keys()
+    for source in sources:
+        parameters["primary energy emission factor"][source] = parameters["primary energy emission factor"][source].replace("[", "").replace("]", "").split(",")
+
+    return parameters
 
 def get_energy_iea(path="data/iea/energy.json"):
     with open(path, "r") as json_file:
@@ -257,7 +272,8 @@ def inv_damage(threshold = 0.1, type="nordhaus"):
         print([np.min([np.abs(f(sol, threshold)) for sol in all_sols])])
         return all_sols[np.argmin([np.abs(f(sol, threshold)) for sol in all_sols])]
 
-if __name__ == "__main__":
+
+def resul_sec_4_3():
     print("Temperature increase")
     step = 0.01
     T = np.arange(2, 40, step)
@@ -292,3 +308,10 @@ if __name__ == "__main__":
     #plt.figure()
     #plt.plot(emissions)
     #plt.show()
+
+
+if __name__ == "__main__":
+    parameters = get_pydice_parameters("../DICE/parameters.json")
+    test = parameters["primary energy emission factor"]["Coal"]
+    print(test)
+    print(float(test[1]))
