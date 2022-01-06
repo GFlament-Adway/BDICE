@@ -1,65 +1,13 @@
 import pymc3 as pm
 import arviz as az
 import numpy as np
-from utils.utils import med_regression, get_params, get_pydice_parameters
-from utils.utils_bayes import bayesian_model, get_data, generate_scenario, load_predictions, load_posterior
+from utils.utils import get_params, get_pydice_parameters
+from utils.utils_bayes import bayesian_model, get_data, generate_scenario, load_predictions, get_posterior
 import matplotlib.pyplot as plt
 import matplotlib
 from DICE.pydice import DICE
 import scipy.stats as stats
 import os
-
-
-def mse(y_hat, y):
-    """
-
-    :param y_hat: predicted values
-    :param y: observed values
-    :return: mean squared error
-    """
-    return np.mean([(y_hat[k] - y[k]) ** 2 for k in range(len(y))])
-
-
-def r2(y_hat, y):
-    """
-
-    :param y_hat: predicted values
-    :param y: observed values
-    :return: R^2
-    """
-    sum_var = np.sum([(y[k] - np.mean(y)) ** 2 for k in range(len(y))])
-    return 1 - np.sum([((y_hat[k] - y[k]) ** 2) for k in range(len(y_hat))]) / sum_var
-
-
-def mpe(y_hat, y):
-    """
-    :param y_hat: predicted values
-    :param y: observed values
-    :return: mean percentage error
-    """
-    return 100 * np.mean([np.abs((y_hat[k] - y[k]) / y[k]) for k in range(len(y))])
-
-
-def reg_median(x, y):
-    """
-
-    :param x:
-    :param y:
-    :return: Median regression of x on y, useless.
-    """
-    beta_25, alpha_25 = med_regression(x, y, n_deciles=2, alpha=0.25)
-    beta_5, alpha_5 = med_regression(x, y, n_deciles=2, alpha=0.5)
-    beta_75, alpha_75 = med_regression(x, y, n_deciles=2, alpha=0.75)
-    print(beta_25, beta_5, beta_75)
-    plt.figure()
-    plt.scatter(x, y, label="observations", alpha=0.5)
-    plt.plot(x, [alpha_25 + beta_25 * x_value for x_value in x], color="red", alpha=0.5)
-    plt.plot(x, [alpha_5 + beta_5 * x_value for x_value in x], label="regression quantile", color="red")
-    plt.plot(x, [alpha_75 + beta_75 * x_value for x_value in x], color="red", alpha=0.5)
-    plt.legend()
-    plt.ylabel("log tfp variation")
-    plt.xlabel("log exergy variation")
-    plt.show()
 
 
 def visu(predictions, countries, idata, y, alpha, param):
@@ -73,18 +21,10 @@ def visu(predictions, countries, idata, y, alpha, param):
     :return: None
     """
 
-    # az.plot_ppc(idata)
     mu_p = predictions["y"]
     lower = [np.sort(mu_p.T[k])[int(len(mu_p.T[k]) * alpha)] for k in range(len(mu_p[0]))]
     upper = [np.sort(mu_p.T[k])[int(len(mu_p.T[k]) * (1 - alpha))] for k in range(len(mu_p[0]))]
-    """
-    print(mu_p.mean(0))
-    print("#################")
-    print(mse(mu_p.mean(0), y))
-    print(r2(mu_p.mean(0), y))
-    print(len(y))
-    print("#################")
-    """
+
     fig, axes = plt.subplots(nrows=len(countries), sharex=True, figsize=(20, 20))
     plt.xticks([year for year in range(0, 46, 5)], [1972 + year for year in range(0, 46, 5)])
     for k in range(len(countries)):
@@ -100,7 +40,6 @@ def visu(predictions, countries, idata, y, alpha, param):
         axes[k].fill_between([k for k in range(46)], lower[k * 46:(k + 1) * 46], upper[k * 46:(k + 1) * 46], alpha=0.1,
                              color="blue")
 
-    # ax.vlines([(k) * 46 for k in range(len(countries) + 1)], ymin=min(y), ymax=max(y), color="red")
     lines_labels = [ax.get_legend_handles_labels() for ax in axes]
     lines, labels = [sum(lol, []) for lol in zip(*lines_labels)]
     fig.legend(lines, labels, loc="lower center")
@@ -117,41 +56,10 @@ def visu(predictions, countries, idata, y, alpha, param):
             fig.savefig("sorties/model_{model_name}/fit_plot/fit_plot.png".format(model_name=param["model_name"]))
 
 
-def get_posterior(delta_a, delta_e, model="model_3", delta_ew = None, plot=False):
-    """
-
-    :param model: Model name
-    :return:
-    """
-
-    all_preds = load_posterior(model)
-
-    countries = os.listdir('sorties/model_1/posterior_data')
-    posterior_pres = {country: [] for country in countries}
-    returned_post = {country: 0 for country in countries}
-    for i, country in enumerate(countries):
-        n_draws = len(all_preds[country])
-        print("############   {country}   ##################".format(country=country))
-        for k in range(n_draws):
-            if delta_ew is not None:
-                posterior_pres[country] += [
-                    all_preds[country][k]["alpha_0"] + all_preds[country][k]["alpha_1"] * delta_a[country] +
-                    all_preds[country][k]["beta_0"] * delta_e[country] + all_preds[country][k]["beta_1"] * delta_ew]
-            else:
-                posterior_pres[country] += [
-                    all_preds[country][k]["alpha_0"] + all_preds[country][k]["alpha_1"] * delta_a[country] +
-                    all_preds[country][k]["beta_0"] * delta_e[country]]
-        if plot:
-            print("Median : ", np.sort(posterior_pres[country])[int(0.5 * n_draws)])
-            print("0.1 credibility interval : ", np.sort(posterior_pres[country])[int(0.1 * n_draws)])
-            print("0.9 credibility interval : ", np.sort(posterior_pres[country])[int(0.9 * n_draws)])
-            returned_post[country] = np.sort(posterior_pres[country])[int(0.5 * n_draws)]
-    return returned_post
-
-
 def show_predictions(model="model_3"):
     """
 
+    TODO : Add error control
     Shows DICE model with different TFP paths.
 
     :return:
@@ -166,21 +74,23 @@ def show_predictions(model="model_3"):
                 range(horizon)]  # Verification that all predictions are of same lengths
         nordhaus_params = [get_pydice_parameters("DICE/parameters_nordhaus.json") for _ in range(len(preds))]
         weitzman_params = [get_pydice_parameters("DICE/parameters_weitzman.json") for _ in range(len(preds))]
-        n_preds = len(preds)//10
-        dices_nord = [DICE(parameters = nordhaus_params[k], tfp=preds[k]) for k in range(n_preds)]
-        dices_weitz = [DICE(parameters = weitzman_params[k], tfp=preds[k]) for k in range(n_preds)]
+        quantile = weitzman_params[0]["compute quantile"]
+        n_preds = len(preds) // 10
+        dices_nord = [DICE(parameters=nordhaus_params[k], tfp=preds[k]) for k in range(n_preds)]
+        dices_weitz = [DICE(parameters=weitzman_params[k], tfp=preds[k]) for k in range(n_preds)]
 
         for i in range(len(preds[0])):
-            print("year : ", i)
             for k in range(n_preds):
                 dices_nord[k].step()
                 dices_weitz[k].step()
-
         fig = plt.figure()
         plt.title("Economic output with {country} TFP".format(country=country))
-        median_nord = [np.sort([dices_nord[k].parameters["output"][t] for k in range(len(dices_nord))])[n_preds//2] for t in range(len(preds[0]))]
-        median_weitzman = [np.sort([dices_weitz[k].parameters["output"][t] for k in range(len(dices_nord))])[n_preds // 2]
-                       for t in range(len(preds[0]))]
+        median_nord = [
+            np.sort([dices_nord[k].parameters["output"][t] for k in range(len(dices_nord))])[int(n_preds/2)] for t
+            in range(len(preds[0]))]
+        median_weitzman = [
+            np.sort([dices_weitz[k].parameters["output"][t] for k in range(len(dices_nord))])[int(n_preds/2)]
+            for t in range(len(preds[0]))]
 
         # plt.plot(dice.parameters["output"], color="red", label="Nordhaus assumptions")
         for k in range(n_preds):
@@ -196,30 +106,35 @@ def show_predictions(model="model_3"):
         plt.ylim(60, 150)
         plt.ylabel("Trillions of $2010")
         plt.legend(loc="best")
-        print("Saving figures")
         if os.path.exists("sorties/{model_name}/predictions".format(model_name=model)):
             k = len(os.listdir("sorties/{model_name}/predictions".format(model_name=model)))
             fig.savefig(
-                "sorties/{model_name}/predictions/predictions_{country}.png".format(model_name=model, country=country))
+                "sorties/{model_name}/predictions/predictions_{country}_{alpha}.png".format(model_name=model,
+                                                                                            country=country,
+                                                                                            alpha=quantile))
         else:
             if os.path.exists("sorties/{model_name}".format(model_name=model)):
                 os.mkdir("sorties/{model_name}/predictions".format(model_name=model))
                 fig.savefig(
-                    "sorties/{model_name}/predictions/predictions_{country}.png".format(model_name=model,
-                                                                                        country=country))
+                    "sorties/{model_name}/predictions/predictions_{country}_{alpha}.png".format(model_name=model,
+                                                                                                country=country,
+                                                                                                alpha=quantile))
             else:
                 os.mkdir("sorties/{model_name}".format(model_name=model))
                 os.mkdir("sorties/{model_name}/predictions".format(model_name=model))
                 fig.savefig(
-                    "sorties/{model_name}/fit_plot/predictions_{country}.png".format(model_name=model, country=country))
+                    "sorties/{model_name}/fit_plot/predictions_{country}_{alpha}.png".format(model_name=model,
+                                                                                             country=country,
+                                                                                             alpha=nordhaus_params[0]["compute quantile"]))
 
 
 def plot_emissions(data, param,
                    countries=["United States", "Japan", "Italy", "Germany", "United Kingdom", "France", "Canada"]):
     """
+    TODO : Add error control
 
     :param data:
-    :param countries:
+    :param countries: List of all the countries
     :return:
     """
     data = data["x_emissions"]
@@ -274,14 +189,13 @@ if __name__ == "__main__":
     # delta_e hyp 2021:
     delta_e = {"France": 0.07, "United States": 0.07, "Japan": 0.07, "Germany": 0.07, "United Kingdom": 0.07,
                "Italy": 0.07, "Canada": 0.07}
-    get_posterior(delta_a=delta_a, delta_e=delta_e, model="model_3", plot=True)
     print("Computing DICE")
     show_predictions(model="model_3")
     print("Computing DICE with world exergy")
     show_predictions(model="model_4")
     params = get_params()
-    horizon = 29
-    alpha = 0.1
+    horizon = 39
+    alpha = 0.5
     for param in params:
         if param["compute"]:
             assert np.all(
@@ -301,11 +215,10 @@ if __name__ == "__main__":
 
             data_pred = generate_scenario(scenario, countries, horizon)
             data = get_data()
-            plot_emissions(data_pred, param)
 
             predictions, countries, idata, y, trace, fig = bayesian_model(data=data, data_pred=data_pred,
                                                                           register_data=True,
-                                                                          tune=tune, draws=draws,
+                                                                          tune=tune, draws=draws, horizon=horizon,
                                                                           include_world_exergy=include_world_exergy,
                                                                           hyperparams=param)
 

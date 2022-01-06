@@ -278,6 +278,87 @@
       "Hydro": 0,
       "Biofuels and waste": 0.01,
       "Wind, solar, etc.": 0.05
+    },
+  "2051": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": 0.01,
+      "Hydro": 0,
+      "Biofuels and waste": 0.01,
+      "Wind, solar, etc.": 0.05
+    },
+    "2052": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": 0.01,
+      "Hydro": 0,
+      "Biofuels and waste": 0.01,
+      "Wind, solar, etc.": 0.05
+    },
+    "2053": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": 0.01,
+      "Hydro": 0,
+      "Biofuels and waste": 0.01,
+      "Wind, solar, etc.": 0.05
+    },
+    "2054": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": 0.01,
+      "Hydro": 0,
+      "Biofuels and waste": 0.01,
+      "Wind, solar, etc.": 0.05
+    },
+    "2055": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": 0.01,
+      "Hydro": 0,
+      "Biofuels and waste": 0.01,
+      "Wind, solar, etc.": 0.05
+    },
+    "2056": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": 0.01,
+      "Hydro": 0,
+      "Biofuels and waste": 0.01,
+      "Wind, solar, etc.": 0.05
+    },
+    "2057": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": 0.01,
+      "Hydro": 0,
+      "Biofuels and waste": 0.01,
+      "Wind, solar, etc.": 0.05
+    },
+    "2058": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": 0.01,
+      "Hydro": 0,
+      "Biofuels and waste": 0.01,
+      "Wind, solar, etc.": 0.05
+    },
+    "2059": {
+      "Coal": -0.05,
+      "Natural gas": -0.05,
+      "Crude oil": -0.05,
+      "Nuclear": 0.01,
+      "Hydro": 0,
+      "Biofuels and waste": 0.01,
+      "Wind, solar, etc.": 0.05
     }},
     "Germany": {
       "2020": {

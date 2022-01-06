@@ -1,101 +1,392 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac449694-7a99-4e40-b9c8-db3ed34e2217" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/DICE/parameters_weitzman.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_26.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_27.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_28.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_29.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_30.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_31.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_32.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_1/fit_plot/plot_5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_1/posterior/posterior_5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_1/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_5.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_1/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_5.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_1/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_5.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_1/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_5.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_1/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_5.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_1/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_5.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_1/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_5.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_1/predictions/countries_5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_2/emissions_plot/plot_5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_2/fit_plot/plot_4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_2/posterior/posterior_4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_2/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_2/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_2/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_5.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_2/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_5.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_2/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_5.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_2/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_5.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_2/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_5.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_2/predictions/countries_4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_3/emissions_plot/plot_4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_3/fit_plot/plot_4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_3/posterior/posterior_4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_3/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_3/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_3/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_3/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_3/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_3/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_3/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_3/predictions/countries_11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_United States_quantile.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_4/emissions_plot/plot_4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_4/fit_plot/plot_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_4/posterior/posterior_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_4/posterior_data/Canada/posterior_predictive_True_tune_5000_draws_2000_model_3.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_4/posterior_data/France/posterior_predictive_True_tune_5000_draws_2000_model_3.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_4/posterior_data/Germany/posterior_predictive_True_tune_5000_draws_2000_model_4.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_4/posterior_data/Italy/posterior_predictive_True_tune_5000_draws_2000_model_4.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_4/posterior_data/Japan/posterior_predictive_True_tune_5000_draws_2000_model_4.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_4/posterior_data/United Kingdom/posterior_predictive_True_tune_5000_draws_2000_model_4.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_4/posterior_data/United States/posterior_predictive_True_tune_5000_draws_2000_model_4.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_4/predictions/countries_10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_United States_exergy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_United States_world_exergy_quantile.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_5/emissions_plot/plot_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_5/fit_plot/plot_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_5/posterior/posterior_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_5/posterior_data/Canada/posterior_predictive_True_tune_5000_draws_2000_model_3.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_5/posterior_data/France/posterior_predictive_True_tune_5000_draws_2000_model_3.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_5/posterior_data/Germany/posterior_predictive_True_tune_5000_draws_2000_model_3.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_5/posterior_data/Italy/posterior_predictive_True_tune_5000_draws_2000_model_3.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_5/posterior_data/Japan/posterior_predictive_True_tune_5000_draws_2000_model_3.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_5/posterior_data/United Kingdom/posterior_predictive_True_tune_5000_draws_2000_model_3.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_5/posterior_data/United States/posterior_predictive_True_tune_5000_draws_2000_model_3.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_5/predictions/countries_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_6/emissions_plot/plot_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_6/posterior_data/Germany/posterior_predictive_True_tune_5000_draws_2000_model_2.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_6/posterior_data/Italy/posterior_predictive_True_tune_5000_draws_2000_model_2.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_6/posterior_data/Japan/posterior_predictive_True_tune_5000_draws_2000_model_2.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_6/posterior_data/United Kingdom/posterior_predictive_True_tune_5000_draws_2000_model_2.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sorties/model_6/posterior_data/United States/posterior_predictive_True_tune_5000_draws_2000_model_2.csv" afterDir="false" />
+    <list default="true" id="ac449694-7a99-4e40-b9c8-db3ed34e2217" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/DICE/parameters_nordhaus.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_1/fit_plot/plot_10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_1/fit_plot/plot_6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_1/fit_plot/plot_7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_1/fit_plot/plot_8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_1/fit_plot/plot_9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_1/posterior/posterior_10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_1/posterior/posterior_6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_1/posterior/posterior_7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_1/posterior/posterior_8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_1/posterior/posterior_9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_1/predictions/countries_6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_1/predictions/countries_7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_1/predictions/countries_8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_1/predictions/countries_9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_2/fit_plot/plot_5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_2/fit_plot/plot_6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_2/fit_plot/plot_7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_2/posterior/posterior_5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_2/posterior/posterior_6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_2/posterior/posterior_7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_2/predictions/countries_5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_2/predictions/countries_6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_2/predictions/countries_7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_3/fit_plot/plot_5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_3/fit_plot/plot_6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_3/fit_plot/plot_7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_3/posterior/posterior_5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_3/posterior/posterior_6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_3/posterior/posterior_7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_3/predictions/countries_13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_3/predictions/countries_14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_United States_0.5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_United States_False.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_United States_True.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_4/fit_plot/plot_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_4/fit_plot/plot_5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_4/fit_plot/plot_6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_4/posterior/posterior_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_4/posterior/posterior_5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_4/posterior/posterior_6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_4/predictions/countries_13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_4/predictions/countries_14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_United States_False_exergy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_United States_True_exergy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_5/fit_plot/plot_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_5/fit_plot/plot_5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_5/fit_plot/plot_6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_5/posterior/posterior_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_5/posterior/posterior_5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_5/posterior/posterior_6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_5/predictions/countries_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_5/predictions/countries_5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_5/predictions/countries_6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_6/fit_plot/plot_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_6/fit_plot/plot_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_6/fit_plot/plot_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_6/posterior/posterior_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_6/posterior/posterior_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_6/posterior/posterior_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_6/predictions/countries_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_6/predictions/countries_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_6/predictions/countries_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_7/fit_plot/plot_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_7/fit_plot/plot_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_7/posterior/posterior_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_7/posterior/posterior_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_7/predictions/countries_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_7/predictions/countries_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_8/fit_plot/plot_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_8/posterior/posterior_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sorties/model_8/predictions/countries_2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/DICE_bayesian.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DICE_bayesian.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_10_2021_08_46__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_10_2021_08_46__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_10_2021_08_49__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_10_2021_08_49__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DICE/parameters.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DICE/pydice.py" beforeDir="false" afterPath="$PROJECT_DIR$/DICE/pydice.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bayesian model.py" beforeDir="false" afterPath="$PROJECT_DIR$/bayesian model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_Canada.png" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_Canada.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_France.png" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_France.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_Germany.png" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_Germany.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_Italy.png" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_Italy.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_Japan.png" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_Japan.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_United Kingdom.png" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_United Kingdom.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_United States.png" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_United States.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_Canada.png" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_Canada.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_France.png" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_France.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_Germany.png" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_Germany.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_Italy.png" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_Italy.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_Japan.png" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_Japan.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_United Kingdom.png" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_United Kingdom.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_United States.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenario/var_exergy_scenario_1.json" beforeDir="false" afterPath="$PROJECT_DIR$/scenario/var_exergy_scenario_1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/section_2_1_results.py" beforeDir="false" afterPath="$PROJECT_DIR$/section_2_1_results.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/emissions_plot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_17.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_18.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_19.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_20.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_21.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_22.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_23.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_24.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_25.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_26.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_27.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_28.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_29.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_30.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_31.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/emissions_plot/plot_9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_1/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_1/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_1/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_1/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_1/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_1/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_1/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_1/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_1/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_1/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_1/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_1/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_1/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_1/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_1/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/emissions_plot/emissions_plot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/emissions_plot/plot_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/emissions_plot/plot_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/emissions_plot/plot_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/emissions_plot/plot_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/emissions_plot/plot_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_2/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_2/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_2/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_2/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_2/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_2/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_2/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_2/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_2/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_2/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_2/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_2/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_2/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_2/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_2/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/emissions_plot/emissions_plot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/emissions_plot/plot_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/emissions_plot/plot_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/emissions_plot/plot_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/emissions_plot/plot_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_3/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_3/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/Canada/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_3/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_3/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/France/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_3/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_3/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/Germany/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_3/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_3/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/Italy/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_3/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_3/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/Japan/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_3/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_3/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/United Kingdom/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_3/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_3/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/posterior_data/United States/posterior_predictive_False_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/predictions/countries_10.png" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_3/predictions/countries_10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_Canada.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_France.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_Germany.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_Italy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_Japan.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_United Kingdom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_United States.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_United States_quantile.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/emissions_plot/emissions_plot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/emissions_plot/plot_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/emissions_plot/plot_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/emissions_plot/plot_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/emissions_plot/plot_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/Canada/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_4/posterior_data/Canada/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/Canada/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_4/posterior_data/Canada/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/Canada/posterior_predictive_True_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/Canada/posterior_predictive_True_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/France/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_4/posterior_data/France/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/France/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_4/posterior_data/France/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/France/posterior_predictive_True_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/France/posterior_predictive_True_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/Germany/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_4/posterior_data/Germany/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/Germany/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_4/posterior_data/Germany/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/Germany/posterior_predictive_True_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/Germany/posterior_predictive_True_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/Germany/posterior_predictive_True_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/Italy/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_4/posterior_data/Italy/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/Italy/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_4/posterior_data/Italy/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/Italy/posterior_predictive_True_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/Italy/posterior_predictive_True_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/Italy/posterior_predictive_True_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/Japan/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_4/posterior_data/Japan/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/Japan/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_4/posterior_data/Japan/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/Japan/posterior_predictive_True_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/Japan/posterior_predictive_True_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/Japan/posterior_predictive_True_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/United Kingdom/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_4/posterior_data/United Kingdom/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/United Kingdom/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_4/posterior_data/United Kingdom/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/United Kingdom/posterior_predictive_True_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/United Kingdom/posterior_predictive_True_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/United Kingdom/posterior_predictive_True_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/United States/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_4/posterior_data/United States/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/United States/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_4/posterior_data/United States/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/United States/posterior_predictive_True_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/United States/posterior_predictive_True_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/posterior_data/United States/posterior_predictive_True_tune_5000_draws_2000_model_4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/predictions/countries_8.png" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_4/predictions/countries_8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_Canada.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_France.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_Germany.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_Italy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_Japan.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_United Kingdom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_United States_exergy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_United States_world_exergy_quantile.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/emissions_plot/emissions_plot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/emissions_plot/plot_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/emissions_plot/plot_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/emissions_plot/plot_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/Canada/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_5/posterior_data/Canada/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/Canada/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_5/posterior_data/Canada/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/Canada/posterior_predictive_True_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/Canada/posterior_predictive_True_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/France/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_5/posterior_data/France/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/France/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_5/posterior_data/France/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/France/posterior_predictive_True_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/France/posterior_predictive_True_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/Germany/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_5/posterior_data/Germany/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/Germany/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_5/posterior_data/Germany/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/Germany/posterior_predictive_True_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/Germany/posterior_predictive_True_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/Italy/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_5/posterior_data/Italy/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/Italy/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_5/posterior_data/Italy/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/Italy/posterior_predictive_True_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/Italy/posterior_predictive_True_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/Japan/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_5/posterior_data/Japan/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/Japan/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_5/posterior_data/Japan/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/Japan/posterior_predictive_True_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/Japan/posterior_predictive_True_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/United Kingdom/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_5/posterior_data/United Kingdom/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/United Kingdom/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_5/posterior_data/United Kingdom/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/United Kingdom/posterior_predictive_True_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/United Kingdom/posterior_predictive_True_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/United States/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_5/posterior_data/United States/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/United States/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_5/posterior_data/United States/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/United States/posterior_predictive_True_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_5/posterior_data/United States/posterior_predictive_True_tune_5000_draws_2000_model_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_6/emissions_plot/emissions_plot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_6/emissions_plot/plot_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_6/emissions_plot/plot_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_6/emissions_plot/plot_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_6/posterior_data/Canada/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_6/posterior_data/Canada/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_6/posterior_data/Canada/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_6/posterior_data/Canada/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_6/posterior_data/France/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_6/posterior_data/France/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_6/posterior_data/France/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_6/posterior_data/France/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_6/posterior_data/Germany/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_6/posterior_data/Germany/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_6/posterior_data/Germany/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_6/posterior_data/Germany/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_6/posterior_data/Germany/posterior_predictive_True_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_6/posterior_data/Italy/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_6/posterior_data/Italy/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_6/posterior_data/Italy/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_6/posterior_data/Italy/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_6/posterior_data/Italy/posterior_predictive_True_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_6/posterior_data/Japan/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_6/posterior_data/Japan/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_6/posterior_data/Japan/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_6/posterior_data/Japan/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_6/posterior_data/Japan/posterior_predictive_True_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_6/posterior_data/United Kingdom/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_6/posterior_data/United Kingdom/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_6/posterior_data/United Kingdom/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_6/posterior_data/United Kingdom/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_6/posterior_data/United Kingdom/posterior_predictive_True_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_6/posterior_data/United States/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_6/posterior_data/United States/posterior_predictive_True_tune_5000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_6/posterior_data/United States/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_6/posterior_data/United States/posterior_predictive_True_tune_5000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_6/posterior_data/United States/posterior_predictive_True_tune_5000_draws_2000_model_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_7/emissions_plot/emissions_plot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_7/emissions_plot/plot_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_7/posterior_data/Canada/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_7/posterior_data/Canada/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_7/posterior_data/Canada/posterior_predictive_True_tune_20000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_7/posterior_data/Canada/posterior_predictive_True_tune_20000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_7/posterior_data/France/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_7/posterior_data/France/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_7/posterior_data/France/posterior_predictive_True_tune_20000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_7/posterior_data/France/posterior_predictive_True_tune_20000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_7/posterior_data/Germany/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_7/posterior_data/Germany/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_7/posterior_data/Germany/posterior_predictive_True_tune_20000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_7/posterior_data/Germany/posterior_predictive_True_tune_20000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_7/posterior_data/Italy/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_7/posterior_data/Italy/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_7/posterior_data/Italy/posterior_predictive_True_tune_20000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_7/posterior_data/Italy/posterior_predictive_True_tune_20000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_7/posterior_data/Japan/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_7/posterior_data/Japan/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_7/posterior_data/Japan/posterior_predictive_True_tune_20000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_7/posterior_data/Japan/posterior_predictive_True_tune_20000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_7/posterior_data/United Kingdom/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_7/posterior_data/United Kingdom/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_7/posterior_data/United Kingdom/posterior_predictive_True_tune_20000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_7/posterior_data/United Kingdom/posterior_predictive_True_tune_20000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_7/posterior_data/United States/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_7/posterior_data/United States/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_7/posterior_data/United States/posterior_predictive_True_tune_20000_draws_2000_model_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_7/posterior_data/United States/posterior_predictive_True_tune_20000_draws_2000_model_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_8/emissions_plot/emissions_plot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_8/emissions_plot/plot_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_8/posterior_data/Canada/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_8/posterior_data/Canada/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_8/posterior_data/Canada/posterior_predictive_True_tune_20000_draws_2000_model_1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_8/posterior_data/France/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_8/posterior_data/France/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_8/posterior_data/France/posterior_predictive_True_tune_20000_draws_2000_model_1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_8/posterior_data/Germany/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_8/posterior_data/Germany/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_8/posterior_data/Germany/posterior_predictive_True_tune_20000_draws_2000_model_1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_8/posterior_data/Italy/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_8/posterior_data/Italy/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_8/posterior_data/Italy/posterior_predictive_True_tune_20000_draws_2000_model_1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_8/posterior_data/Japan/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_8/posterior_data/Japan/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_8/posterior_data/Japan/posterior_predictive_True_tune_20000_draws_2000_model_1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_8/posterior_data/United Kingdom/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_8/posterior_data/United Kingdom/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_8/posterior_data/United Kingdom/posterior_predictive_True_tune_20000_draws_2000_model_1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_8/posterior_data/United States/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_8/posterior_data/United States/posterior_predictive_True_tune_20000_draws_2000_model_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_8/posterior_data/United States/posterior_predictive_True_tune_20000_draws_2000_model_1.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/utils_bayes.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils_bayes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,6 +412,9 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="1yFvkG80o2XOF0L0wkR2CGjhctf" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -133,7 +427,8 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/utils/utils.py" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager" selected="Python.bayesian model">
@@ -150,27 +445,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bayesian model.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="pgm" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="DICE_bayesian" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../Visu/visu" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../Visu/visu/pgm.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -228,7 +502,7 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\Guillaume\Desktop\these\poc_bpce\poc_bpce\venv\Scripts\python.exe" />
+      <option name="SDK_HOME" value="/usr/bin/python3.6" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/utils" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -242,20 +516,41 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="utils_bayes" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="DICE_bayesian" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/utils/utils_bayes.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.bayesian model" />
-      <item itemvalue="Python.pgm" />
       <item itemvalue="Python.section_2_1_results" />
       <item itemvalue="Python.test" />
       <item itemvalue="Python.utils" />
+      <item itemvalue="Python.utils_bayes" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.bayesian model" />
+        <item itemvalue="Python.utils_bayes" />
         <item itemvalue="Python.utils" />
         <item itemvalue="Python.section_2_1_results" />
         <item itemvalue="Python.test" />
-        <item itemvalue="Python.pgm" />
       </list>
     </recent_temporary>
   </component>
@@ -303,7 +598,21 @@
       <option name="project" value="LOCAL" />
       <updated>1637313531187</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Changes">
+      <created>1638186958216</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1638186958216</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Changes">
+      <created>1638187924763</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1638187924763</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -316,7 +625,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -324,6 +632,7 @@
     <MESSAGE value="New data" />
     <MESSAGE value="bayesian model" />
     <MESSAGE value="Changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes" />
+    <MESSAGE value="README" />
+    <option name="LAST_COMMIT_MESSAGE" value="README" />
   </component>
 </project>

@@ -6,24 +6,25 @@ from scipy.stats import ks_2samp, norm
 from scipy.optimize import newton
 
 
-def med_regression(x,y, n_deciles=3, alpha=0.5):
+def mse(y_hat, y):
     """
 
-    :param x:
-    :param y:
-    :return:
+    :param y_hat: predicted values
+    :param y: observed values
+    :return: mean squared error
+    """
+    return np.mean([(y_hat[k] - y[k]) ** 2 for k in range(len(y))])
+
+
+def r2(y_hat, y):
     """
 
-    x = list(x)
-    y=list(y)
-
-    x_sorted =[np.sort(x)[int(k*len(x)/n_deciles) : int((k+1)*len(x)/n_deciles)] for k in range(n_deciles)]
-    y_sorted = [[y[x.index(x_value)] for x_value in x_sorted[k]] for k in range(n_deciles)]
-
-    med_x = [np.sort(x)[int(len(x)*0.5)] for x in x_sorted]
-    med_y = [np.sort(y)[int(len(y)*alpha)] for y in y_sorted]
-
-    return((med_y[-1] - med_y[0])/(med_x[-1] - med_x[0]), (np.sum([med_y[k] for k in range(n_deciles)]) - np.sum([med_x[k] for k in range(n_deciles)]) ) / n_deciles)
+    :param y_hat: predicted values
+    :param y: observed values
+    :return: R^2
+    """
+    sum_var = np.sum([(y[k] - np.mean(y)) ** 2 for k in range(len(y))])
+    return 1 - np.sum([((y_hat[k] - y[k]) ** 2) for k in range(len(y_hat))]) / sum_var
 
 def get_countries(path="data/iea/tfp_countries.csv"):
     countries = []
@@ -116,7 +117,7 @@ def tfp(path="data/iea/tfp_countries.csv", country="France"):
                 data[country] += [float(row[index].replace(",","."))]
     return data
 
-def get_scenario(scenario, path_exergy_var="scenario/var_exergy_", exergy_coefs_path = "data/iea/exergy_coefs.json", energy_path="data/iea/IEA_all_countries/countries_energy_balance.csv", country="United States"):
+def get_scenario(scenario, path_exergy_var="scenario/var_exergy_", exergy_coefs_path = "data/iea/exergy_coefs.json", energy_path="data/iea/IEA_all_countries/countries_energy_balance.csv", country="United States", horizon=30):
 
 
     assert country in ["France", "United States", "United Kingdom", "Germany", "Italy", "Canada", "Japan"]
@@ -129,14 +130,23 @@ def get_scenario(scenario, path_exergy_var="scenario/var_exergy_", exergy_coefs_
         data_exergy_scenario = json.load(json_file)
     exergy_coef = get_exergy_coefs(exergy_coefs_path)
     sources = list(data_exergy_scenario[country]["2020"].keys())
-    for year in range(2020, 2051):
+    last_year =  list(data_exergy_scenario["United States"])[-1]
+    for year in range(2020, 2020 + horizon + 1):
         #2019 is the last observed year
-        energy_dataset["country"][country].update({year : {source: energy_dataset["country"][country][year - 1][source]*(1 + data_exergy_scenario[country][str(year)][source]) for source in sources}})
-        energy_dataset["country"][country][year]["exergy"] = np.sum(
-            [exergy_coef[ener] * energy_dataset["country"][country][year][ener] for ener in sources])
-        add_emissions(energy_dataset, country)
+        if year < int(last_year):
+            energy_dataset["country"][country].update({year : {source: energy_dataset["country"][country][year - 1][source]*(1 + data_exergy_scenario[country][str(year)][source]) for source in sources}})
+            energy_dataset["country"][country][year]["exergy"] = np.sum(
+                [exergy_coef[ener] * energy_dataset["country"][country][year][ener] for ener in sources])
+            add_emissions(energy_dataset, country)
+        else:
+            energy_dataset["country"][country].update({year: {
+                source: energy_dataset["country"][country][year - 1][source] * (
+                            1 + data_exergy_scenario[country][last_year][source]) for source in sources}})
+            energy_dataset["country"][country][year]["exergy"] = np.sum(
+                [exergy_coef[ener] * energy_dataset["country"][country][year][ener] for ener in sources])
+            add_emissions(energy_dataset, country)
 
-    return [energy_dataset["country"][country][year]["exergy"] for year in range(2020, 2051)], [energy_dataset["country"][country][year]["emissions"] for year in range(2020, 2051)]
+    return [energy_dataset["country"][country][year]["exergy"] for year in range(2020, 2020 + horizon + 1)], [energy_dataset["country"][country][year]["emissions"] for year in range(2020, 2020 + horizon + 1)]
 
 def diff(data):
     return ([data[t] - data[t - 1] for t in range(1, len(data))])

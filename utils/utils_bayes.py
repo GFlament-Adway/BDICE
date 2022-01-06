@@ -6,26 +6,43 @@ from utils.utils import get_countries, diff, countries_energy, tfp, get_scenario
 import csv
 import os
 
-def generate_scenario(scenario, countries, horizon):
 
+def generate_scenario(scenario, countries, horizon):
+    """
+    TODO : Add error control
+
+    :param scenario: Pass scenario name, example : scenario_1.json
+    :param countries: Name of the country to generate the scenario
+    :param horizon: time horizon, 30 years as the climate stress-test intend
+    :return: An exergy scenario for a country
+    """
     x_exergy_var = []
     x_emissions = []
     for country in countries:
-        x_exergy_c, x_emissions_c = get_scenario(scenario=scenario, country=country)
+        x_exergy_c, x_emissions_c = get_scenario(scenario=scenario, country=country, horizon=horizon)
         x_exergy_var += [x_exergy_c]
         x_emissions += [x_emissions_c]
 
     x_us_var = [np.sum([x_exergy_var[c][t] for c in range(len(countries))]) for t in range(len(x_exergy_var[0]))]
-    x_exergy_var = np.array([diff(np.log(x_exergy_var[c])) for c in range(len(x_exergy_var))]).T
-    x_us_var = diff([np.log(x) for x in x_us_var])
-    data_pred = {"x_pred": x_exergy_var, "x_us_pred": x_us_var, "x_emissions": x_emissions}
+    x_log_exergy_var = np.array([diff(np.log(x_exergy_var[c])) for c in range(len(x_exergy_var))]).T
+    if horizon > len(x_us_var):
+        len_diff = horizon + 1 - len(x_us_var)
+        x_us_var += [np.sum([x_exergy_var[c][-1] for c in range(len(countries))]) for _ in range(len_diff)]
+        x_log_exergy_var = np.array([diff(np.log(x_exergy_var[c] + [x_exergy_var[c][-1] for _ in range(len_diff)])) for c in range(len(x_exergy_var))]).T
 
-    assert horizon < len(x_exergy_var)
-    assert horizon < len(x_us_var)
+    x_us_var = diff([np.log(x) for x in x_us_var])
+    data_pred = {"x_pred": x_log_exergy_var, "x_us_pred": x_us_var, "x_emissions": x_emissions}
 
     return data_pred
 
 def load_predictions(model, parent_dir = ""):
+    """
+    TODO : Add error control
+
+    :param model: Model name, for example : model_1
+    :param parent_dir: Parent directory to look for data
+    :return: Predictions made after the tuning step
+    """
     countries = os.listdir(parent_dir + "sorties/{model}/posterior_data".format(model=model))
     preds = {country : [] for country in countries}
     for country in countries:
@@ -40,8 +57,14 @@ def load_predictions(model, parent_dir = ""):
                     preds[country] += [[row[k] for k,b in enumerate(list_indices) if b]]
     return preds
 
-
 def load_posterior(model, parent_dir = ""):
+    """
+    TODO : Add error control
+
+    :param model: Model name, example : model_1
+    :param parent_dir: Parent directory. Used in the path to check for data
+    :return: Return a dictonnary containing all the posterior data.
+    """
     countries = os.listdir(parent_dir + "sorties/{model}/posterior_data".format(model=model))
     preds = {country : [] for country in countries}
     for country in countries:
@@ -57,38 +80,46 @@ def load_posterior(model, parent_dir = ""):
     return preds
 
 
-def predict(idata, traj_e, delta_a=-0.02, horizon=30, sample_size=1000, include_world_exergye=False):
-    predictions = []
-    return predictions
+def get_posterior(delta_a, delta_e, model="model_3", delta_ew = None, plot=False):
+    """
+    TODO : Add error control
 
-def pred_posterior(idata, country_id, delta_a, delta_e, delta_e_w, world_exergy=True):
-    alpha_0 = [idata["posterior_predictive"][r"$\alpha_0$"][0][t][country_id] for t in
-               range(len(idata["posterior_predictive"][r"$\alpha_0$"][0]))]
-    alpha_1 = [idata["posterior_predictive"][r"$\alpha_1$"][0][t][country_id] for t in
-               range(len(idata["posterior_predictive"][r"$\alpha_0$"][0]))]
-    beta_0 = [idata["posterior_predictive"][r"$\beta_0$"][0][t][country_id] for t in
-              range(len(idata["posterior_predictive"][r"$\alpha_0$"][0]))]
-    if world_exergy:
-        beta_1 = [idata["posterior_predictive"][r"$\beta_1$"][0][t][country_id] for t in
-                  range(len(idata["posterior_predictive"][r"$\alpha_0$"][0]))]
-    sigma = [idata["posterior_predictive"]["sigma"][0][t][country_id] for t in
-             range(len(idata["posterior_predictive"][r"$\alpha_0$"][0]))]
+    :param model: Model name
+    :return: Load posterior from model. Return a dictionnary that contains the posterior for all countries given a scenario for exergy.
+    """
 
-    if world_exergy:
-        post = np.array(alpha_0) + np.array([alpha_1[k]*delta_a for k in range(len(alpha_1))]) + np.array([beta_0[k]*delta_e for k in range(len(alpha_1))]) + np.array([beta_1[k]*delta_e_w for k in range(len(alpha_1))]) + np.random.normal(0, sigma)
-    else:
-        post = np.array(alpha_0) + np.array([alpha_1[k] * delta_a for k in range(len(alpha_1))]) + np.array(
-            [beta_0[k] * delta_e for k in range(len(alpha_1))]) + np.random.normal(0, sigma)
-    #equivalent of np.add : np.array([1,2,3]) + np.array([1,2,3]) = array([2,4,6])
-    return post
+    all_preds = load_posterior(model)
+
+    countries = os.listdir('sorties/model_1/posterior_data')
+    posterior_pres = {country: [] for country in countries}
+    returned_post = {country: 0 for country in countries}
+    for i, country in enumerate(countries):
+        n_draws = len(all_preds[country])
+        print("############   {country}   ##################".format(country=country))
+        for k in range(n_draws):
+            if delta_ew is not None:
+                posterior_pres[country] += [
+                    all_preds[country][k]["alpha_0"] + all_preds[country][k]["alpha_1"] * delta_a[country] +
+                    all_preds[country][k]["beta_0"] * delta_e[country] + all_preds[country][k]["beta_1"] * delta_ew]
+            else:
+                posterior_pres[country] += [
+                    all_preds[country][k]["alpha_0"] + all_preds[country][k]["alpha_1"] * delta_a[country] +
+                    all_preds[country][k]["beta_0"] * delta_e[country]]
+        if plot:
+            print("Median : ", np.sort(posterior_pres[country])[int(0.5 * n_draws)])
+            print("0.1 credibility interval : ", np.sort(posterior_pres[country])[int(0.1 * n_draws)])
+            print("0.9 credibility interval : ", np.sort(posterior_pres[country])[int(0.9 * n_draws)])
+            returned_post[country] = np.sort(posterior_pres[country])[int(0.5 * n_draws)]
+    return returned_post
 
 def register(idata, country_id, country_name, tuning, draw, param, world_exergy=True, horizon = 29):
     """
+    TODO : Add error control
     Register data. Should not be used alone.
-    :param idata:
-    :param country_id:
-    :param country_name:
-    :param world_exergy:
+    :param idata: idata see PyMC3 documentation
+    :param country_id: ID of the country to load data
+    :param country_name: Name of the country at index country_id in the countries' list
+    :param world_exergy: World exergy scenario
     :return: None
     """
     alpha_0 = [idata["posterior_predictive"][r"$\alpha_0$"][0][t][country_id] for t in
@@ -254,13 +285,9 @@ def bayesian_model(data, data_pred, register_data = True, tune=500, draws=1000, 
             mu_x_us = pm.Normal("mu_x_us", mu=hyperparams["mu_beta_1"], sd=hyperparams["sigma_mu_beta_1"], shape=len(countries))
             x_us_coef = pm.Normal(r"$\beta_1$", mu=mu_x_us, sigma=sigma_x_us, shape=len(countries))
 
-
-        #x_coeff = pm.Normal(r"$\beta_0$", mu_x + x_offset, sigma=sigma_x_coef, shape=len(countries))
-        #x_ar = pm.Normal(r"$\alpha_1$", mu_ar + ar_offset, sigma=sigma_x_ar, shape=len(countries))
         x_coeff = pm.Normal(r"$\beta_0$", mu_x, sigma=sigma_x_coef, shape=len(countries))
         x_ar = pm.Normal(r"$\alpha_1$", mu_ar, sigma=sigma_x_ar, shape=len(countries))
         # Define likelihood
-        #print(x_coeff * x)
         if include_world_exergy:
             if hyperparams["posterior distribution"] == "Cauchy":
                 likelihood = pm.Cauchy("y",
@@ -331,7 +358,7 @@ def bayesian_model(data, data_pred, register_data = True, tune=500, draws=1000, 
 
     if register_data:
         for country in countries:
-            register(idata, countries.index(country), country, world_exergy=include_world_exergy, tuning=tune, draw=draws, param=hyperparams)
+            register(idata, countries.index(country), country, world_exergy=include_world_exergy, tuning=tune, draw=draws, param=hyperparams, horizon=horizon)
 
     return predictions, countries, idata, y, trace, fig
 
