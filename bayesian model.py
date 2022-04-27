@@ -81,6 +81,7 @@ def show_predictions(model="model_3"):
 
         for i in range(len(preds[0])):
             for k in range(n_preds):
+                print(dices_nord[k].parameters["output"])
                 dices_nord[k].step()
                 dices_weitz[k].step()
         fig = plt.figure()
@@ -106,6 +107,7 @@ def show_predictions(model="model_3"):
         plt.ylim(60, 150)
         plt.ylabel("Trillions of $2010")
         plt.legend(loc="best")
+        plt.show()
         if os.path.exists("sorties/{model_name}/predictions".format(model_name=model)):
             k = len(os.listdir("sorties/{model_name}/predictions".format(model_name=model)))
             fig.savefig(
@@ -144,7 +146,6 @@ def plot_emissions(data, param,
     assert np.all([len(data[k]) == data_length for k in range(len(data))]), "Not all series are of same length."
 
     print("### Emissions USA ###")
-    print(data[0])
     print("#########")
     fig, axes = plt.subplots(nrows=len(countries), sharex=True, figsize=(20, 20))
     plt.xticks([year for year in range(0, data_length, 5)], [2020 + year for year in range(0, data_length, 5)])
@@ -185,7 +186,7 @@ if __name__ == "__main__":
     delta_a = {"France": 0, "United States": 0, "Japan": 0, "Germany": 0, "United Kingdom": 0, "Italy": 0, "Canada": 0}
     delta_e = {"France": -0.143, "United States": -0.109, "Japan": -0.065, "Germany": -0.097, "United Kingdom": -0.112,
                "Italy": -0.107, "Canada": -0.096}
-    delta_a = get_posterior(delta_a=delta_a, delta_e=delta_e, model="model_7", delta_ew=-0.1, plot=False)
+    delta_a = get_posterior(delta_a=delta_a, delta_e=delta_e, model="model_7", delta_ew=-0.1, plot=True)
     # delta_e hyp 2021:
     delta_e = {"France": 0.07, "United States": 0.07, "Japan": 0.07, "Germany": 0.07, "United Kingdom": 0.07,
                "Italy": 0.07, "Canada": 0.07}
