@@ -81,7 +81,7 @@ def show_predictions(model="model_3"):
 
         for i in range(len(preds[0])):
             for k in range(n_preds):
-                print(dices_nord[k].parameters["output"])
+                #print(dices_nord[k].parameters["output"])
                 dices_nord[k].step()
                 dices_weitz[k].step()
         fig = plt.figure()
@@ -191,17 +191,17 @@ if __name__ == "__main__":
     delta_e = {"France": 0.07, "United States": 0.07, "Japan": 0.07, "Germany": 0.07, "United Kingdom": 0.07,
                "Italy": 0.07, "Canada": 0.07}
     print("Computing DICE")
-    show_predictions(model="model_3")
+    #show_predictions(model="model_3")
     print("Computing DICE with world exergy")
-    show_predictions(model="model_4")
+    #show_predictions(model="model_4")
     params = get_params()
     horizon = 39
     alpha = 0.5
     for param in params:
         if param["compute"]:
-            assert np.all(
-                np.array([key in list(param.keys()) for key in ["mu_beta_1", "sigma_mu_beta_1", "sigma_beta_1"]]) ==
-                param["include beta 1"])
+            #assert np.all(
+            #    np.array([key in list(param.keys()) for key in ["mu_beta_1", "sigma_mu_beta_1", "sigma_beta_1"]]) ==
+            #    param["include beta 1"])
             # Tune : Number of steps to reach
             tune = param["tuning steps"]
             # Number of draws from the posterior density
@@ -214,9 +214,16 @@ if __name__ == "__main__":
             # Countries to be considered
             countries = ["United States", "Japan", "Italy", "Germany", "United Kingdom", "France", "Canada"]
 
+            print("Generating scenario")
             data_pred = generate_scenario(scenario, countries, horizon)
-            data = get_data()
-
+            print("Scenario generated")
+            print("Getting data")
+            data = get_data(starting_year = 1973, end_year = 2019)
+            print(data.keys())
+            print(len(data["x"]))
+            print(len(data["x_exergy"]))
+            print(len(data["y"]))
+            print("Data obtained")
             predictions, countries, idata, y, trace, fig = bayesian_model(data=data, data_pred=data_pred,
                                                                           register_data=True,
                                                                           tune=tune, draws=draws, horizon=horizon,

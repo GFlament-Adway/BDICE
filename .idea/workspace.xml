@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac449694-7a99-4e40-b9c8-db3ed34e2217" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_United States_False.png" afterDir="false" />
+    <list default="true" id="ac449694-7a99-4e40-b9c8-db3ed34e2217" name="Changes" comment="README">
+      <change afterPath="$PROJECT_DIR$/data/iea/IEA_all_countries/Classeur1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/iea/IEA_all_countries/Classeur1.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_pymc3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/DICE_bayesian.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DICE_bayesian.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_10_2021_08_46__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_10_2021_08_46__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_10_2021_08_49__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_10_2021_08_49__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DICE/parameters_nordhaus.json" beforeDir="false" afterPath="$PROJECT_DIR$/DICE/parameters_nordhaus.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DICE/parameters_weitzman.json" beforeDir="false" afterPath="$PROJECT_DIR$/DICE/parameters_weitzman.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DICE/pydice.py" beforeDir="false" afterPath="$PROJECT_DIR$/DICE/pydice.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bayesian model.py" beforeDir="false" afterPath="$PROJECT_DIR$/bayesian model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/hyperparams.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/hyperparams.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/iea/IEA_all_countries/.~lock.countries_energy_balance.csv#" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/iea/tfp_countries.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/iea/tfp_countries.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_United States_False.png" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_3/predictions/predictions_United States_False.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_United States_False.png" beforeDir="false" afterPath="$PROJECT_DIR$/sorties/model_4/predictions/predictions_United States_False.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/utils_bayes.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils_bayes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,15 +58,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-  </component>
-  <component name="RunManager" selected="Python.bayesian model">
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/guillaume.flament_ad/PycharmProjects/BDICE",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  }
+}]]></component>
+  <component name="RunManager" selected="Python.test_pymc3">
     <configuration name="bayesian model" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="DICE_bayesian" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -100,19 +109,19 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="test_pymc3" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="DICE_bayesian" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\Guillaume\Desktop\these\poc_bpce\poc_bpce\venv\Scripts\python.exe" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_pymc3.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -164,19 +173,19 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.test_pymc3" />
       <item itemvalue="Python.bayesian model" />
       <item itemvalue="Python.section_2_1_results" />
-      <item itemvalue="Python.test" />
       <item itemvalue="Python.utils" />
       <item itemvalue="Python.utils_bayes" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test_pymc3" />
         <item itemvalue="Python.bayesian model" />
         <item itemvalue="Python.utils_bayes" />
         <item itemvalue="Python.utils" />
         <item itemvalue="Python.section_2_1_results" />
-        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
@@ -251,7 +260,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

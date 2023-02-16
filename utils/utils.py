@@ -26,6 +26,7 @@ def r2(y_hat, y):
     sum_var = np.sum([(y[k] - np.mean(y)) ** 2 for k in range(len(y))])
     return 1 - np.sum([((y_hat[k] - y[k]) ** 2) for k in range(len(y_hat))]) / sum_var
 
+
 def get_countries(path="data/iea/tfp_countries.csv"):
     countries = []
     with open(path, 'r') as csv_file:
@@ -35,118 +36,144 @@ def get_countries(path="data/iea/tfp_countries.csv"):
                 countries = row
     return countries
 
+
 def get_params(params_path="data/hyperparams.json"):
     with open(params_path, "r") as json_file:
         hyperparams = json.load(json_file)
     return hyperparams
 
-def countries_energy(exergy_coefs_path = "data/iea/exergy_coefs.json", energy_path="data/iea/IEA_all_countries/countries_energy_balance.csv", country="Belgium", starting_year = 1971, end_year = 2020):
+
+def countries_energy(exergy_coefs_path="data/iea/exergy_coefs.json",
+                     energy_path="data/iea/IEA_all_countries/countries_energy_balance.csv", country="Belgium",
+                     starting_year=1971, end_year=2020):
     years = [starting_year + k for k in range(end_year - starting_year)]
     exergy_coef = get_exergy_coefs(exergy_coefs_path)
-    energy_data = {"country": {country: {year : {} for year in years}}}
+    energy_data = {"country": {country: {year: {} for year in years}}}
     with open(energy_path, "r") as csv_file:
         rows = csv.reader(csv_file)
-        for row in rows:
-            if ("Total energy supply (ktoe)" in row[5] or (
-                    "Electricity output (GWh)" in row[5] and "Renewable sources" in row[4])) and country == row[0]:
-                if ("Electricity output (GWh)" in row[5] and "Renewable sources" in row[4]):
-                    for year in range(len(years)):
-                        energy_data["country"][country][starting_year + year].update(
-                            {
+        for i, row in enumerate(rows):
+            if i > 0:
+                if ("Total energy supply" in row[5] or (
+                        "Electricity output" in row[5] and "Renewable sources" in row[4])) and country == row[0]:
+                    if ("Electricity output" in row[5] and "Renewable sources" in row[4]):
+                        for year in range(len(years)):
+                            energy_data["country"][country][starting_year + year].update(
+                                {
                                     "Renewable sources": float(row[6 - 1971 + starting_year + year]) * 85.9845 / 1000}
-                        )
-                else:
-                    if "Coal, peat and oil shale" in row[4]:
-                        for year in range(len(years)):
-                            energy_data["country"][country][starting_year + year].update(
-                                {
-                                    "Coal": float(row[6 - 1971 + starting_year + year])}
                             )
-                    if "Natural gas" in row[4]:
-                        for year in range(len(years)):
-                            energy_data["country"][country][starting_year + year].update(
-                                {
-                                    "Natural gas": float(row[6 - 1971 + starting_year + year])}
-                            )
+                    else:
+                        if "Coal, peat and oil shale" in row[4]:
+                            for year in range(len(years)):
+                                energy_data["country"][country][starting_year + year].update(
+                                    {
+                                        "Coal": float(row[6 - 1971 + starting_year + year])}
+                                )
+                        if "Natural gas" in row[4]:
+                            for year in range(len(years)):
+                                energy_data["country"][country][starting_year + year].update(
+                                    {
+                                        "Natural gas": float(row[6 - 1971 + starting_year + year])}
+                                )
 
-                    if "Crude, NGL and feedstocks" in row[4]:
-                        for year in range(len(years)):
-                            energy_data["country"][country][starting_year + year].update(
-                                {
-                                    "Crude oil": float(row[6 - 1971 + starting_year + year])}
-                            )
-                    if "Nuclear" in row[4]:
-                        for year in range(len(years)):
-                            energy_data["country"][country][starting_year + year].update(
-                                {
-                                    "Nuclear": float(row[6 - 1971 + starting_year + year])}
-                            )
-                    if "Renewables and waste" in row[4]:
-                        for year in range(len(years)):
-                            energy_data["country"][country][starting_year + year].update(
-                                {
-                                    "Renewables and waste": float(row[6 - 1971 + starting_year+ year])}
-                            )
-                    if "Oil products" in row[4]:
-                        for year in range(len(years)):
-                            energy_data["country"][country][starting_year + year].update(
-                                {
-                                    "Oil products": float(row[6 - 1971 + starting_year + year])}
-                            )
+                        if "Crude, NGL and feedstocks" in row[4]:
+                            for year in range(len(years)):
+                                energy_data["country"][country][starting_year + year].update(
+                                    {
+                                        "Crude oil": float(row[6 - 1971 + starting_year + year])}
+                                )
+                        if "Nuclear" in row[4]:
+                            for year in range(len(years)):
+                                energy_data["country"][country][starting_year + year].update(
+                                    {
+                                        "Nuclear": float(row[6 - 1971 + starting_year + year])}
+                                )
+                        if "Renewables and waste" in row[4]:
+                            for year in range(len(years)):
+                                energy_data["country"][country][starting_year + year].update(
+                                    {
+                                        "Renewables and waste": float(row[6 - 1971 + starting_year + year])}
+                                )
+                        if "Oil products" in row[4]:
+                            for year in range(len(years)):
+                                energy_data["country"][country][starting_year + year].update(
+                                    {
+                                        "Oil products": float(row[6 - 1971 + starting_year + year])}
+                                )
 
         for year in years:
-            energy_data["country"][country][year]["Biofuels and waste"] = energy_data["country"][country][year]["Renewables and waste"] - energy_data["country"][country][year]['Renewable sources']
+            energy_data["country"][country][year]["Biofuels and waste"] = energy_data["country"][country][year][
+                                                                              "Renewables and waste"] - \
+                                                                          energy_data["country"][country][year][
+                                                                              'Renewable sources']
             if year < 2000:
-                energy_data["country"][country][year]["Hydro"] = energy_data["country"][country][year]['Renewable sources']
+                energy_data["country"][country][year]["Hydro"] = energy_data["country"][country][year][
+                    'Renewable sources']
             else:
                 energy_data["country"][country][year]["Hydro"] = energy_data["country"][country][2000][
                     'Renewable sources']
-            energy_data["country"][country][year]['Wind, solar, etc.'] = energy_data["country"][country][year]['Renewable sources'] - energy_data["country"][country][year]["Hydro"]
-            energy_data["country"][country][year]["exergy"] = np.sum([exergy_coef[ener]*energy_data["country"][country][year][ener] for ener in list(exergy_coef.keys())])
+            energy_data["country"][country][year]['Wind, solar, etc.'] = energy_data["country"][country][year][
+                                                                             'Renewable sources'] - \
+                                                                         energy_data["country"][country][year][
+                                                                             "Hydro"]
+            energy_data["country"][country][year]["exergy"] = np.sum(
+                [exergy_coef[ener] * energy_data["country"][country][year][ener] for ener in
+                 list(exergy_coef.keys())])
     energy_data = add_emissions(energy_data, country)
     return energy_data
 
-def tfp(path="data/iea/tfp_countries.csv", country="France"):
-    data = {country : []}
+
+def tfp(start_year = 1973, end_year = 2019, path="data/iea/tfp_countries.csv", country="France"):
+    data = {country: []}
     with open(path, "r") as csv_file:
         rows = csv.reader(csv_file)
+        k = 0
         for row in rows:
-            if country in row:
-                index = row.index(country)
-            else:
-                data[country] += [float(row[index].replace(",","."))]
+            if k <= np.float(end_year) - np.float(start_year):
+                k += 1
+                if country in row[0].split(";"):
+                    index = row[0].split(";").index(country)
+                else:
+                    data[country] += [float(row[0].split(";")[index].replace(",", ".").replace("'", "").replace('"', ""))]
     return data
 
-def get_scenario(scenario, path_exergy_var="scenario/var_exergy_", exergy_coefs_path = "data/iea/exergy_coefs.json", energy_path="data/iea/IEA_all_countries/countries_energy_balance.csv", country="United States", horizon=30):
 
-
+def get_scenario(scenario, path_exergy_var="scenario/var_exergy_", exergy_coefs_path="data/iea/exergy_coefs.json",
+                 energy_path="data/iea/IEA_all_countries/countries_energy_balance.csv", country="United States",
+                 horizon=30, last_observed_year=2019):
     assert country in ["France", "United States", "United Kingdom", "Germany", "Italy", "Canada", "Japan"]
     path_exergy_var = path_exergy_var + scenario
     assert os.path.exists(path_exergy_var)
 
-
     energy_dataset = countries_energy(exergy_coefs_path=exergy_coefs_path, energy_path=energy_path, country=country)
     with open(path_exergy_var, "r") as json_file:
         data_exergy_scenario = json.load(json_file)
-    exergy_coef = get_exergy_coefs(exergy_coefs_path)
-    sources = list(data_exergy_scenario[country]["2020"].keys())
-    last_year =  list(data_exergy_scenario["United States"])[-1]
-    for year in range(2020, 2020 + horizon + 1):
-        #2019 is the last observed year
+    with open(exergy_coefs_path, "r") as json_file:
+        exergy_coef = json.load(json_file)
+
+    sources = list(data_exergy_scenario[country][str(last_observed_year + 1)].keys())
+    last_year = list(data_exergy_scenario["United States"])[-1]
+    for year in range(last_observed_year, last_observed_year + horizon + 1):
+        # 2019 is the last observed year
         if year < int(last_year):
-            energy_dataset["country"][country].update({year : {source: energy_dataset["country"][country][year - 1][source]*(1 + data_exergy_scenario[country][str(year)][source]) for source in sources}})
+            energy_dataset["country"][country].update({year: {
+                source: energy_dataset["country"][country][year - 1][source] * (
+                        1 + data_exergy_scenario[country][str(year + 1)][source]) for source in sources}})
             energy_dataset["country"][country][year]["exergy"] = np.sum(
                 [exergy_coef[ener] * energy_dataset["country"][country][year][ener] for ener in sources])
             add_emissions(energy_dataset, country)
         else:
             energy_dataset["country"][country].update({year: {
                 source: energy_dataset["country"][country][year - 1][source] * (
-                            1 + data_exergy_scenario[country][last_year][source]) for source in sources}})
+                        1 + data_exergy_scenario[country][last_year][source]) for source in sources}})
             energy_dataset["country"][country][year]["exergy"] = np.sum(
                 [exergy_coef[ener] * energy_dataset["country"][country][year][ener] for ener in sources])
             add_emissions(energy_dataset, country)
 
-    return [energy_dataset["country"][country][year]["exergy"] for year in range(2020, 2020 + horizon + 1)], [energy_dataset["country"][country][year]["emissions"] for year in range(2020, 2020 + horizon + 1)]
+    return [energy_dataset["country"][country][year]["exergy"] for year in
+            range(last_observed_year, last_observed_year + horizon + 1)], [
+               energy_dataset["country"][country][year]["emissions"] for year in
+               range(last_observed_year, last_observed_year + horizon + 1)]
+
 
 def diff(data):
     return ([data[t] - data[t - 1] for t in range(1, len(data))])
@@ -173,6 +200,7 @@ def get_exergy_iea(path="data/iea/exergy_from_iea_data.csv"):
             exergy += [float(row[0])]
     return exergy
 
+
 def get_pydice_parameters(path="DICE/parameters.json"):
     """
     Load parameters for the DICE model
@@ -185,9 +213,11 @@ def get_pydice_parameters(path="DICE/parameters.json"):
         parameters = json.load(json_file)
     sources = parameters["primary energy emission factor"].keys()
     for source in sources:
-        parameters["primary energy emission factor"][source] = parameters["primary energy emission factor"][source].replace("[", "").replace("]", "").split(",")
+        parameters["primary energy emission factor"][source] = parameters["primary energy emission factor"][
+            source].replace("[", "").replace("]", "").split(",")
 
     return parameters
+
 
 def get_energy_iea(path="data/iea/energy.json"):
     with open(path, "r") as json_file:
@@ -205,7 +235,6 @@ def get_exergy_coefs(path="data/iea/exergy_coefs.json"):
 def get_exergy(energy, exergy_coefs):
     exergy = {}
     for k in range(len(energy)):
-        print(energy[k].keys())
         year = list(energy[k].keys())[0]
         exergy.update({year: np.sum(
             [float(exergy_coefs[ener]) * float(energy[k][year][ener]) for ener in energy[0][year].keys()])})
@@ -232,17 +261,19 @@ def get_tfp(path="../data/tfp_data"):
 
 
 def add_emissions(energie, country):
-
     years = list(energie["country"][country].keys())
-    emissions_factor = {"Coal": 820, "Natural gas": 490, "Crude oil": 400, "Nuclear": 12, "Hydro": 24, "Biofuels and waste": 230, 'Wind, solar, etc.': 25}
+    emissions_factor = {"Coal": 820, "Natural gas": 490, "Crude oil": 400, "Nuclear": 12, "Hydro": 24,
+                        "Biofuels and waste": 230, 'Wind, solar, etc.': 25}
     sources = list(emissions_factor.keys())
 
     for year in years:
         emissions = 0
         for source in sources:
-            emissions += energie["country"][country][year][source]*emissions_factor[source]*11630/1000 #kg to tonnes
+            emissions += energie["country"][country][year][source] * emissions_factor[
+                source] * 11630 / 1000  # kg to tonnes
         energie["country"][country][year].update({"emissions": emissions})
     return energie
+
 
 def weitzman(T, G):
     """
@@ -253,17 +284,18 @@ def weitzman(T, G):
     """
 
     phi = np.log(G / 280) / np.log(2)
-    S = T/phi
-    return norm.pdf(S, 3, 1.447)/phi
+    S = T / phi
+    return norm.pdf(S, 3, 1.447) / phi
 
 
 def newton_raphson(x_0, f, f_prime, max_iter, args=()):
     sol = x_0
     for _ in range(max_iter):
-        sol = sol - f(sol, args[0])/f_prime(sol)
+        sol = sol - f(sol, args[0]) / f_prime(sol)
     return sol
 
-def inv_damage(threshold = 0.1, type="nordhaus"):
+
+def inv_damage(threshold=0.1, type="nordhaus"):
     """
 
     :param T: Temperature increase since industrial revolution.
@@ -272,12 +304,12 @@ def inv_damage(threshold = 0.1, type="nordhaus"):
     """
 
     if type.lower() == "nordhaus":
-        return np.sqrt((1/0.0026) * (1-threshold)/threshold)
+        return np.sqrt((1 / 0.0026) * (1 - threshold) / threshold)
 
     if type.lower() == "weitzman":
-        f = lambda T, threshold :  0.0023888492339916045*T**2 + 0.00015625000000000003*T**7 + 1 - 1/threshold
-        f_prime = lambda T : 2*0.0023888492339916045*T + 7*0.00015625000000000003*T**6
-        all_sols = [newton_raphson(x, f, f_prime, max_iter=20000, args = (threshold, )) for x in np.arange(0.4, 10, 0.3)]
+        f = lambda T, threshold: 0.0023888492339916045 * T ** 2 + 0.00015625000000000003 * T ** 7 + 1 - 1 / threshold
+        f_prime = lambda T: 2 * 0.0023888492339916045 * T + 7 * 0.00015625000000000003 * T ** 6
+        all_sols = [newton_raphson(x, f, f_prime, max_iter=20000, args=(threshold,)) for x in np.arange(0.4, 10, 0.3)]
         print(all_sols)
         print([np.min([np.abs(f(sol, threshold)) for sol in all_sols])])
         return all_sols[np.argmin([np.abs(f(sol, threshold)) for sol in all_sols])]
@@ -293,14 +325,14 @@ def resul_sec_4_3():
         dens = []
         damage_prob = []
         for t in T:
-            dens += [weitzman(t,G)]
-        print(np.sum([step*(dens[t+1]+dens[t])/2 for t in range(len(dens) - 1)]))
+            dens += [weitzman(t, G)]
+        print(np.sum([step * (dens[t + 1] + dens[t]) / 2 for t in range(len(dens) - 1)]))
     print("Damage : ")
 
     threshold = 1 - 0.01
     inv_d = inv_damage(threshold, type="weitzman")
     print("threshold : ", inv_d)
-    T = np.arange(inv_d, 40,  step)
+    T = np.arange(inv_d, 40, step)
     Gs = [400 + k for k in range(0, 350, 50)]
     for G in Gs:
         damage_prob = []
@@ -310,14 +342,16 @@ def resul_sec_4_3():
 
     country = "France"
     energie = countries_energy(exergy_coefs_path
-     = "../data/iea/exergy_coefs.json", energy_path="../data/iea/IEA_all_countries/countries_energy_balance.csv", country=country)
+                               ="../data/iea/exergy_coefs.json",
+                               energy_path="../data/iea/IEA_all_countries/countries_energy_balance.csv",
+                               country=country)
 
     emissions = [energie["country"][country][year]["emissions"] for year in range(1971, 2019)]
     print(emissions)
     import matplotlib.pyplot as plt
-    #plt.figure()
-    #plt.plot(emissions)
-    #plt.show()
+    # plt.figure()
+    # plt.plot(emissions)
+    # plt.show()
 
 
 if __name__ == "__main__":

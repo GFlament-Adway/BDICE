@@ -1,6 +1,6 @@
 [
   {
-    "model_name": 1,
+    "model_name": 0,
     "compute": true,
     "mu_alpha_0": 0,
     "sigma_mu_alpha_0": 1,
@@ -13,6 +13,24 @@
     "sigma_alpha_1": 10,
     "sigma_beta_0": 10,
     "include beta 1": false,
+    "posterior distribution": "Gaussian",
+    "tuning steps": 5000,
+    "draws": 2000
+  },
+  {
+    "model_name": 1,
+    "compute": true,
+    "mu_alpha_0": 0,
+    "sigma_mu_alpha_0": 1,
+    "mu_alpha_1": 0,
+    "mu_beta_0": 0,
+    "sigma_mu_beta_0": 1,
+    "sigma_mu_alpha_1": 1,
+    "sigma": 1,
+    "sigma_alpha_0": 10,
+    "sigma_alpha_1": 10,
+    "sigma_beta_0": 10,
+    "include beta 1": true,
     "posterior distribution": "Gaussian",
     "tuning steps": 5000,
     "draws": 2000
